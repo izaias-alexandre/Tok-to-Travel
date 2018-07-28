@@ -1,0 +1,52 @@
+<link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet">
+<style>
+  .test{
+    font-size: 24px;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    color: #424250;
+  }
+  .inicio{
+    font-size:40px;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+  }
+    .box{
+  margin-width: 50px;
+  margin-height: 50px;
+  margin-left: 50px;
+  margin-top: 50px;
+  }
+</style>
+<center><h3><div class="inicio">OBRIGADO POR SUA CONTRIBUIÇÃO!</div></h3></center>
+  <br>
+  <br>
+
+
+<font size="2" face="Arial">
+
+<center><h1><div class="test">Nome Do Evento: <?php echo $view_dados->nome_evento; ?></div></h1></center>
+<center><h1><div class="test">CEP: <?php echo $view_dados->evento_CEP; ?></div></h1></center>
+<center><h1><div class="test">Logradouro:<?php echo $view_dados->evento_end; ?></div></h1></center>
+<center><h1><div class="test">Número: <?php echo $view_dados->evento_nro; ?></div></h1></center>
+<center><h1><div class="test">Complemento: <?php echo $view_dados->evento_comp; ?></div></h1></center>
+<center><h1><div class="test">Bairro : <?php echo $view_dados->evento_bairro; ?></div></h1></center>
+<center><h1><div class="test">Cidade :<?php echo $view_dados->evento_cidade; ?></div></h1></center>
+<center><h1><div class="test">Descrição: <?php echo $view_dados->desc_evento; ?></div></h1></center>
+
+</font>
+<center>         <?php foreach ($view_dados->caminho_img as $val){ ?>                              
+            <img id="img" src="<?php echo $val->caminho_img; ?>" alt="<?php echo $view_return;?>" width="=200" height="200"/>
+          
+                     
+                                                        <?php } ?></center>
+
+<font size="2" face="Arial">
+
+<center><h3> <div class="inicio">INFORMAÇOES SALVA, AGUARDANDO RESPOSTA DOS ADMINISTRADORES.</div></h3></center>
+
+</font><br><br>
+
+
+
+<center><a href="site/cadastroEventos/">Cadastar Mais Eventos</a></center>
+
+

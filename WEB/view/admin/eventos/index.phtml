@@ -1,0 +1,50 @@
+<div class="content">
+<a href="eventos/formCadastro" class="botao01"> Novo  Eventos</a>
+</div>
+<table width=100% border="1px" bgcolor="black">
+  <tr>
+    <td width="101" height="40" bgcolor="white"><center>ID</center></td>
+    <td width="113"><center>NOME</center></td>
+    <td width="113"><center>DATA</center></td>
+    <td width="85"><center>CEP</center></td>
+    <td width="85"><center>LOGRADOURO</center></td>
+    <td width="85"><center>NUMERO</center></td>
+    <td width="85"><center>COMPLEMENTO</center></td>
+    <td width="85"><center>BAIRRO</center></td>
+    <td width="85"><center>CIDADE</center></td>
+    <td width="85"><center></center></td>
+    <td width="85"><center></center></td>
+
+   <!-- <td width="85"><center>DESCRICAO</center></td>-->
+  </tr>
+   <?php 
+        //var_dump($view_list);
+        if(count($view_list)>0):?>
+        <?php foreach ($view_list as $li):?>
+  <tr>
+    <td height="40" bgcolor="white "><?php echo $li->cod_evento;?></td>
+    <td bgcolor="white"><?php echo  $li->nome_evento;?></td>
+    <td bgcolor="white "><?php echo $li->data_evento;?></td>
+    <td bgcolor="white "><?php echo $li->evento_CEP;?></td>
+    <td bgcolor="white "><?php echo $li->evento_end;?></td>
+    <td bgcolor="white "><?php echo $li->evento_nro;?></td>
+    <td bgcolor="white "><?php echo $li->evento_comp;?></td>
+    <td bgcolor="white "><?php echo $li->evento_bairro;?></td>
+    <td bgcolor="white "><?php echo $li->evento_cidade;?></td>
+    <!-- <td bgcolor="white "><?php// echo $li->desc_evento;?></td>-->
+<td>
+    <div class="content">
+                <a href="eventos/formCadastro/<?php echo $li->cod_evento;?>" class="botao01">Editar</a>
+            </div>
+            </td>
+            <td>
+                <div class="content">
+                <a href="eventos/excluir/<?php echo $li->cod_evento;?>/<?php echo $li->nome_evento;?>" class="botao01">Deletar</a>
+            </div>
+            </td>
+  </tr>
+  
+    <?php endforeach;?>
+        <?php endif;?>
+</table>
+

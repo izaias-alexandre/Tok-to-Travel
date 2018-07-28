@@ -1,0 +1,8 @@
+<a href="locais" class="botao01">Voltar</a>
+    <form enctype="multipart/form-data" method="POST" action="locais/saveimg">
+        <input type="hidden" name="url" value="content/site/img/imagemLocais/"/>
+        <input type="hidden" name="id_alb" value="<?php echo $view_return;?>"/>
+        <input type="hidden" name="tipo" value="local"/>
+			<input type="file" name="arquivo[]" multiple="multiple" /><br><br>
+			<input name="enviar" type="submit" value="Enviar" class="botao01">
+		</form>

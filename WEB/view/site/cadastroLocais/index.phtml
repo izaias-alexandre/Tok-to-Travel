@@ -1,0 +1,126 @@
+<?php
+date_default_timezone_set('America/Sao_Paulo');
+// CRIA UMA VARIAVEL E ARMAZENA A HORA ATUAL DO FUSO-HORÀRIO DEFINIDO (BRASÍLIA)
+ $dataLocal = date('d/m/Y H:i:s');
+?>
+        <form action="site/cadastroLocais/save" id="form" method="POST" enctype="multipart/form-data">
+        <br>
+        <br>
+		
+		
+     
+
+         <center><div class="box1"><h1>CADASTRO DE LOCAIS</div><br></center><br><br><br>
+            <center><input type="hidden" name="url" value="content/site/img/imagemLocais/"/></center>
+            <center><label for="txtNome" ><h3>NOME DO LOCAL</h3></label> <input type="text" class="input-class" style="text-align:center" placeholder="Digite o Nome Do Local " id="txtNome"  name="nome_loc" required/></center><br>
+            <center><label for="numCEP" ><h3>CEP</h3></label> <input type="text" maxlength="9" class="input-class" style="text-align:center" placeholder="Digite o Cep" id="numCEP" name="cep_loc" onblur="pesquisacep(this.value);" required/><br></center><br>
+            <center><label for="txtEnd" ><h3>LOGRADOURO</h3></label> <input readonly  type="text" class="input-class" style="text-align:center" placeholder="Digite o Logradouro" id="rua" name="end_loc" required/><br></center><br>
+            <center><label for="numLoc" ><h3>NÚMERO DO LOCAL</h3></label> <input type="number" class="input-class" style="text-align:center" placeholder="Digite o Número Do Local" id="numLoc" name="nro_loc" required/><br></center><br>
+            <center><label for="numComp" ><h3>COMPLEMENTO</h3></label> <input   type="text" class="input-class" style="text-align:center" placeholder="Digite o Complemento" id="nomComp" name="comp_loc" /><br></center><br>
+            <center><label for="txtBairro" ><h3>BAIRRO</h3></label> <input readonly  type="text" class="input-class" style="text-align:center" placeholder="Digite o Bairro" id="bairro" name="bairro_loc" required/><br></center><br>
+            <center><label for="txtCidade" ><h3>CIDADE</h3></label> <input readonly  type="text" class="input-class" style="text-align:center" placeholder="Digite a Cidade" id="cidade" name="cidade_loc" required/><br></center><br>
+            <center><h3>Categoria de Local:</h3></center>
+          <center><select id="txtLocal"  class="input-class"  name="tipo_local">
+            <option value="0"></option>
+      <?php $tipo = $this->CarregarTipo();
+      foreach($tipo as $tip){?>
+        <option value="<?php echo $tip->id_tipolocal;?>"><?php echo $tip->nome;?></option>
+      <?php } ?>
+    </select></center><br>
+            <center><input type="hidden" id="txtEnd" name="data_cad_loc" value="<?php echo $dataLocal;?>"/><br></center><br>
+            <center><label for="txtDesc" ><h3>DESCRIÇÃO</h3></label><br><textarea rows="4" cols="50" name="desc_local"  placeholder="Descrição" class="input-class"  id="txtDesc"> </textarea><br></center><br>
+           
+            <center><button type="submit" id="btnEnviar" class="send" onclick=" return verificacep();" >Enviar</button></center><br>
+            
+             <script type="text/javascript" >
+    
+    function limpa_formulário_cep() {
+            //Limpa valores do formulário de cep.
+            document.getElementById('rua').value=("");
+            document.getElementById('bairro').value=("");
+            document.getElementById('cidade').value=("");
+            document.getElementById('uf').value=("");
+            document.getElementById('ibge').value=("");
+
+    }
+
+    function meu_callback(conteudo) {
+        if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+            document.getElementById('rua').value=(conteudo.logradouro);
+            document.getElementById('bairro').value=(conteudo.bairro);
+            document.getElementById('cidade').value=(conteudo.localidade);
+            document.getElementById('uf').value=(conteudo.uf);
+            document.getElementById('ibge').value=(conteudo.ibge);
+            return true;
+        } //end if.
+        else {
+            //CEP não Encontrado.
+           // limpa_formulário_cep();
+             document.getElementById('rua').value=('CEP não Encontrado');
+            document.getElementById('bairro').value=('CEP não Encontrado');
+            document.getElementById('cidade').value=('CEP não Encontrado');
+
+
+    }
+}
+
+        
+    function pesquisacep(valor) {
+
+        //Nova variável "cep" somente com dígitos.
+        var cep = valor.replace(/\D/g, '');
+
+        //Verifica se campo cep possui valor informado.
+        if (cep != "") {
+
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+
+            //Valida o formato do CEP.
+            if(validacep.test(cep)) {
+
+                //Preenche os campos com "..." enquanto consulta webservice.
+                document.getElementById('rua').value="...";
+                document.getElementById('bairro').value="...";
+                document.getElementById('cidade').value="...";
+               
+
+                //Cria um elemento javascript.
+                var script = document.createElement('script');
+
+                //Sincroniza com o callback.
+                script.src = '//viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+
+                //Insere script no documento e carrega o conteúdo.
+                document.body.appendChild(script);
+
+            } //end if.
+            else {
+                //cep é inválido.
+               // limpa_formulário_cep();
+                
+            document.getElementById('rua').value=("Formato de CEP inválido");
+            document.getElementById('bairro').value=("Formato de CEP inválido");
+            document.getElementById('cidade').value=("Formato de CEP inválido");
+            return false;
+            }
+        } //end if.
+        else {
+            //cep sem valor, limpa formulário.
+            limpa_formulário_cep();
+            return false;
+        }
+    };
+
+    </script>
+       <script>
+function verificacep(){
+if( document.getElementById('rua').value == "Formato de CEP inválido" || document.getElementById('rua').value == "CEP não Encontrado" ){
+    alert("CEP não atente a especificacao");
+    return false;
+}
+}
+    </script>
+        </form>
+

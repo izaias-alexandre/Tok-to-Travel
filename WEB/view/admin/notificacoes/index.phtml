@@ -1,0 +1,52 @@
+<table width=100% border="1px" bgcolor="black">
+  <tr>
+    <td width="101" height="40" bgcolor="white"><center>ID</center></td>
+  
+      <td width="85"><center>Ativo</center></td>
+      <td width="85"><center>Mensagem</center></td>
+      <td width="85"><center>Ocorrência</center></td>
+      <td width="85"><center></center></td>
+  
+
+
+   <!-- <td width="85"><center>DESCRICAO</center></td>-->
+  </tr>
+   <?php 
+        //var_dump($view_list);
+        if(count($view_list)>0):?>
+        <?php foreach ($view_list as $li):?>
+  <tr>
+    <td height="40" bgcolor="white "><?php echo $li->id;?></td>
+    <td bgcolor="white"><?php echo  $li->ativo;?></td>
+    <td bgcolor="white "><?php echo $li->msg;?></td>
+    <td bgcolor="white "><?php echo $li->cat;?></td>
+    
+
+     
+    <td>               
+ <?php if(preg_match('/local/',  $li->msg)){?>
+    <a href="notificacoes/locais/<?php echo $li->cat;?>/<?php echo $li->id;?>" class="botao01" >Finalizar</a>
+             <?php }else if(preg_match('/evento/',  $li->msg)){ ?>
+    <a href="notificacoes/eventos/<?php echo $li->cat;?>/<?php echo $li->id;?>" class="botao01">Finalizar</a>
+             <?php } else if(preg_match('/contato/',  $li->msg)){?>
+ 
+<a href="notificacoes/contatos/<?php echo $li->cat;?>/<?php echo $li->id;?>" class="botao01">Visualizar</a>
+         <?php } else if(preg_match('/parceiro/',  $li->msg)){?>
+    <!-- para contatos-->
+<a href="notificacoes/parceiro/<?php echo $li->cat;?>/<?php echo $li->id;?>" class="botao01">Visualizar</a>
+      <?php } else if(preg_match('/servico/',  $li->msg)){?>
+    <!-- para contatos-->
+<a href="notificacoes/parceiro_servico/<?php echo $li->cat;?>/<?php echo $li->id;?>" class="botao01">Visualizar</a>
+             <?php }else{ ?>
+<a href="notificacoes/finaliza/<?php echo $li->id;?>">Finalizar</a>
+             <?php }?>
+            </td>
+        </tr>
+        
+        <?php endforeach;?>
+        <?php endif;?>
+    </tbody>
+</table>
+
+
+

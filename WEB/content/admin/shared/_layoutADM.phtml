@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+                    <base href="<?php echo APP_ROOT;?>admin/">
+            <title>
+         PAINEL ADMIN
+        </title>
+        <!-- <script lang="JavaScript">
+          
+        </script>-->
+            <link rel="shortcut icon" href="../content/site/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="../content/site/img/favicon.ico" type="image/x-icon">
+      <style>
+    
+    *{
+    margin:0;
+    padding:0;
+    }
+    
+    
+    header{
+      width: 100%;
+      height:15%;
+      top:0;
+      left:0;
+      background-color:#222;
+      position: fixed;
+      z-index:999;
+    }
+    
+    body{
+      
+      background-attachment:fixed;
+      background-size:100%;
+      background-repeat: no-repeat;
+       background: #f1ede8 url(../img/noise-all.png);
+      /*background-color:#000;*/
+    
+    }
+    
+    
+    .menu-icon{
+      position:fixed;
+      font-size:35px;
+      font-weight: bold;
+      padding:5px;
+      width:40px;
+      height:40px;
+      text-align:center;
+      background-color: #424250;
+      color: #fff;
+      cursor: pointer;
+      transition: all .4s;
+      left:300px;
+      top:0;
+    }
+    
+    .menu-icon:hover{
+    
+    background-color: #CFCFCF;
+    color:#424250;      
+    }
+    
+    #check{
+    position: absolute;
+                display: none;
+    }
+    
+    .menu{
+    height:100%;
+    position:fixed;
+    background-color: #222;
+    top:15%;
+    /*overflow: hidden;*/
+                display: block;
+    tansition:all .2s;
+                width:200px;
+    
+    }
+    
+    
+    ul{
+      list-style: none;
+                         display: block;
+    }
+    
+    ul li a{
+      display:block;
+      font-size:18px;
+      font-family: 'Arial';
+      padding:10px;
+      border-bottom:solid 1px #000;
+      color: #ccc;
+      text-decoration:none;
+      transition:all .2s;
+    }
+    
+    ul li a:hover{
+    background-color: #ccc;
+    color: #000;
+    }
+    
+    .Negro1{
+    margin-top:60px;
+    background-color:#111;
+    border-left:solid 5px #444;
+                
+    }
+     .Negro2{
+    margin-top:50px;
+          margin-left:350px;
+          margin-right: -350px;
+    background-color:#222;
+          
+    }
+    
+    .bg{
+      width:100%;
+      height:100%;
+      left:0;
+      top:0;
+      position:fixed;
+      background-color:rgba(0,0,0,.6);
+      display:none;    
+    }
+    
+    
+                .conteudo1{
+                    margin-top:10%;
+                    margin-left: 17%; 
+                    position:absolute;
+                    width: 30%;
+                }
+                .sino{
+                    width: 90px;
+                        height:90px;
+                        position: absolute;
+                        left: 90%;
+                }
+                
+     h1#notificacao{
+       width:15px;
+       height:15px;
+       border : 1px solid black;
+       position:absolute;
+       left:90%;
+       top:50px;
+        font-size: 15px;
+        padding-left:5px;
+        padding-bottom:3px;
+        background-color:white;
+     }
+     td{
+        background-color: white;
+     }
+     .botao01{
+     background: -webkit-linear-gradient(bottom, orange, orange 70%);
+     background: -moz-linear-gradient(bottom, #E0E0E0, #F9F9F9 70%);
+     background: -o-linear-gradient(bottom, #E0E0E0, #F9F9F9 70%);
+     background: -ms-linear-gradient(bottom, #E0E0E0, #F9F9F9 70%);
+     background: linear-gradient(bottom, #E0E0E0, #F9F9F9 70%);
+     border: 1px solid black;
+     border-radius: 3px;
+     box-shadow: 0 3px 0 rgba(0, 0, 0, .3),
+                   0 2px 7px rgba(0, 0, 0, 0.2);
+     color: black;
+     display: block;
+     font-family: "Trebuchet MS";
+     font-size: 14px;
+     font-weight: bold;
+     line-height: 25px;
+     text-align: center;
+     text-decoration: none;
+     text-transform: uppercase;
+     text-shadow:1px 1px 0 #FFF;
+     padding: 10px 15px;
+     position: relative;
+     width: 170px;
+    }
+    .botao01:before{
+     border: 1px solid black;
+     border-radius: 3px;
+     box-shadow: inset 0 -2px 12px -4px rgba(70, 70, 70, .2),
+                   inset 0 3px 2px -1px rgba(255, 255, 255, 1);
+     content: "";
+     bottom: 0;
+     left: 0;
+     right: 0;
+     top: 0;
+     padding: 20px;
+     position: absolute;
+    }
+ 
+    .botao01:after{
+     border-radius: 2px;
+     content: "";
+     bottom: 15px;
+     left: 0px;
+     right: 0px;
+     top: 0px;
+     position: absolute;
+    }
+     .botao01:active{
+     box-shadow: inset 0 0 7px rgba(0, 0, 0, .2);
+     top: 4px;
+    }
+    .botao01:active:before{
+     border: none;
+     box-shadow:none;
+    }
+     
+    
+                      
+.input-class {
+  padding: 12px 30px;
+  text-transform: uppercase;
+  width: 100%;
+  border: 4px solid #656360;
+  border-radius: 15px;
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+ /* margin: 4px 3px;*/
+  display: block;
+  /*text-align:center;*/
+}
+
+.input-class:focus {
+  box-shadow: 0 0 5px #656360;
+  /*width: 350px;*/
+}
+
+.input-class::-webkit-input-placeholder { /* Chrome, Safari, Opera */
+  color: #656360;
+  font-style: italic;
+}
+
+.input-class:-moz-placeholder { /* Firefox 18- */
+  color: #656360;
+  font-style: italic;
+  opacity: 1;
+}
+
+.input-class::-moz-placeholder {  /* Firefox 19+ */
+  color: #656360;
+  font-style: italic;
+  opacity: 1;
+}
+
+.input-class:-ms-input-placeholder { /* IE10+ */ 
+  color: #656360;
+  font-style: italic; 
+
+}
+.send {
+  background: none;
+  color: black;
+  border: 1px solid black;
+  border-radius: 70px;
+  cursor: pointer;
+  font-size: 20px;
+  outline: none;
+  padding: 15px 70px;
+}
+
+h3{
+  text-align: center;
+}
+  
+               
+    
+      
+  </style>
+        <script src="../content/admin/js/jquery-1.7.1.min.js"></script>
+  <script>
+/**
+ * EXECUTA A FUNÇÃO "ATUALIZA" PARA VERIFICAR SE HÁ ALGUMA NOTIFICAÇÃO
+ */
+$(document).ready(function() {
+  atualiza();
+});
+
+  /**
+   * FUNÇÃO ATUALIZA QUE BUCA A PÁGINA AÇÃO PARA IMPRIMIR NA ID NOTIFICAÇÃO
+   */
+
+function atualiza(){
+  $.get("../model/Notificacoes.php", function(resultado){
+    
+    $('#notificacao').html(resultado);
+  });
+/**
+* FUNÇÃO E TEMPO DE ATUALIZAÇÃO DA ID NOTIFICAÇÃO
+*/
+  setTimeout('atualiza()', 5000);
+}
+</script>
+    </head>
+    <body>
+    
+                    <header>
+                     <img src="../content/admin/img/logo.png" class="img" />
+                     <a href="notificacoes/"> <img src="../content/admin/img/notification.png" class="sino" /></a>
+                     <h1 id="notificacao"></h1>
+                <nav class="menu">
+      <ul>
+        <li><a class="Negro1" href="home/">HOME</a></li>
+        <li><a href="usuario/">USUARIO</a></li>
+                                <li><a href="locais/">LOCAIS</a></li>
+                                <li><a href="eventos/">EVENTOS</a></li>
+                                <li><a href="atracoes/">ATRACOES</a></li>
+                                   <li><a href="sessao/logout">SAIR</a></li>
+      </ul>
+                   
+                     
+                   
+      
+    </nav>  
+                    </header>
+    
+    
+                <div class="conteudo1 main">
+                  <?php $this->Render(); ?>  
+                </div>
+    
+    </body>
+</html>
+    

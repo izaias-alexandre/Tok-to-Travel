@@ -1,0 +1,32 @@
+<a href="usuario/" class="botao01">Voltar</a>
+<table width=100% border="1px" bgcolor="black">
+  <tr>
+    <td width="101" height="40"  bgcolor="white" ><center>ID</center></td>
+    <td width="113"><center>VALOR DO PAGAMENTO</center></td>
+    <td width="113"><center>DATA DO PAGAMENTO</center></td>
+    <td width="85"><center>ID DO USUÁRIO</center></td>
+    <td width="85"><center>STATUS</center></td>
+    <td width="85"><center>PLANO</center></td>
+    <td width="85"><center>TRANSAÇÃO</center></td>
+    <td width="85"><center>DATA DO PEDIDO</center></td>
+    
+
+  </tr>
+   <?php 
+        //var_dump($view_list);
+        if(count($view_list)>0):?>
+        <?php foreach ($view_list as $li):?>
+  <tr>
+    <td height="40" bgcolor="white "><?php echo $li->id_pgto;?></td>
+    <td bgcolor="white"><?php echo  $li->valor_pgto;?></td>
+    <td bgcolor="white "><?php echo $li->data_pgto;?></td>
+    <td bgcolor="white "><?php echo $li->id_usuario;?></td>
+    <td bgcolor="white "><?php echo $li->status_pgto;?></td>
+    <td bgcolor="white "><?php echo $li->plano;?></td>
+    <td bgcolor="white "><?php echo $li->trasacao;?></td>
+    <td bgcolor="white "><?php echo $li->data_pedido;?></td>
+    </tr>
+        <?php endforeach;?>
+        <?php endif;?>
+</table>
+

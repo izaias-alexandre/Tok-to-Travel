@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="content/site/css/album.css" >
+<center><h3>Ola compartilhe sua Foto</h3></center>
+<br><br>
+
+
+<?php
+$qualquer = $this ->album($_SESSION['id']); ?>
+<form method="POST" action="telaAlbum/Save" enctype="multipart/form-data">
+<center> 
+<label for="Imagem">Foto</label> 
+    <input type="hidden" name="url" value="content/site/img/telaAlbum/"/>
+        <input type="hidden" name="id_alb" value="<?php echo $qualquer[0]->album_id_album; ?>"/>
+        <input type="hidden" name="tipo" value="local"/>
+<input id="Imagem" type="file" name="arquivo[]" multiple="multiple" />
+  <input name="enviar" type="submit" value="Enviar">
+</center>
+</form>
+<ul id="album">
+<?php
+foreach ($qualquer as $chave) { ?>
+    
+  <li id="foto05"><img class="img" src="<?php echo $chave->caminho_img;  ?>"/></li>
+<?php } ?>
+
+  
+
+</ul>
+
+

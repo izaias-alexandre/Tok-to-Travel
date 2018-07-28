@@ -1,0 +1,57 @@
+ <script>
+                                    $(document).ready(function(){
+                                         $("li").removeClass('current-menu-item');
+                                        $(".eventos").addClass('current-menu-item');
+ });
+                                    </script>
+<div id="main">
+    
+      <div class="wrapper cf">
+      
+        
+      <!-- portfolio content-->
+          <div id="portfolio-content" class="cf">          
+        
+        
+        
+        <ul id="filter-buttons">
+          <li><a href="#" data-filter="*" class="selected">Principais</a></li>
+          <li><a href="#" data-filter=".1">Esportivos</a></li>
+          <li><a href="#" data-filter=".2">Oficinas</a></li>
+         <!-- <li><a href="#" data-filter=".3">Inaugurações</a></li>-->
+          <li><a href="#" data-filter=".4">Festivais</a></li>
+                                        <li><a href="#" data-filter=".5">Shows </a></li>
+        </ul>
+        
+        <!-- Filter container -->
+        <div id="filter-container" class="cf">
+                                    <?php
+                                    $imagensDB = $this->carregarEventos();
+                                   
+                                    foreach($imagensDB as $img){?>
+                                          <figure class="<?php echo $img->categoria;?>">
+                                              <a href="site/eventos/eventos/<?php echo $img->cod_evento;?>" class="thumb"> <img src="<?php echo $img->caminho_img;?>" alt=""/></a>
+            <figcaption>
+              <a href="site/eventos/eventos/<?php echo $img->cod_evento;?>"><h3 class="heading"><?php echo $img->nome_evento;?> </h3></a>
+                                                        <ul>
+                                                            <li><?php echo 'Data:'.$img->data_evento;?></li>
+                                                            <li><?php echo 'Horário:'.$img->hr_evento;?></li>
+                                                        </ul>
+                                                        <p> <?php echo $img->desc_evento;?> </p>
+                                                           
+                                                </figcaption>
+          </figure>  
+
+                                       <?php }
+                                       ?>
+          
+        
+        </div><!-- ENDS Filter container -->
+        
+      </div>
+      <!-- ENDS featured -->
+                    
+        </div><!-- ENDS WRAPPER -->
+      
+    </div>
+    

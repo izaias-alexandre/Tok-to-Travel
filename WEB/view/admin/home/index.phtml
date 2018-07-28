@@ -1,0 +1,88 @@
+<?php
+  date_default_timezone_set('America/Sao_Paulo');
+
+//session_start();
+$servidor = "179.188.16.2";
+  $usuario = "toktotraveldb";
+  $senha = "Tokto*3000";
+  $dbname = "toktotraveldb";
+  
+  //Criar a conexao
+  $conn = mysqli_connect($servidor, $usuario, $senha, $dbname);
+?>
+<?php
+    
+      
+      //Pesquisar os ultimos usuarios online nos 20 segundo
+      //$result_qnt_visitas = "SELECT count(id) as online FROM visitas WHERE data_final >= '" . $data['online'] . "'";
+      $result_usuarios_dia = mysqli_query($conn, "SELECT count(id) as online FROM visitas WHERE date(data_inicio) BETWEEN date(now() - INTERVAL 1 day ) and now()");
+      //$resultado_qnt_visitas_d = mysqli_query($conn, $result_qnt_visitas);
+      //$row_qnt_visitas = mysqli_fetch_assoc($resultado_qnt_visitas);
+                        $row_qnt_vist_day = mysqli_fetch_assoc($result_usuarios_dia);?>
+   <?php
+      //Obter a data atual
+      $data['atual'] = date('Y-m-d H:i:s');  
+
+      //Diminuir 20 segundos 
+      $data['online'] = strtotime($data['atual'] . " - 20 seconds");
+      $data['online'] = date("Y-m-d H:i:s",$data['online']);
+      
+      //Pesquisar os ultimos usuarios online nos 20 segundo
+      $result_qnt_visitas = "SELECT count(id) as online FROM visitas WHERE data_final >= '" . $data['online'] . "'";
+      
+      $resultado_qnt_visitas = mysqli_query($conn, $result_qnt_visitas);
+      $row_qnt_visitas = mysqli_fetch_assoc($resultado_qnt_visitas);
+    ?>
+
+<div class="Negro2">
+<font size="2" face="Arial" color="#ccc">
+<!--<center><h1>Usuários online: <span id='online'></span></h1></center>-->
+    
+ 
+ <center><h1>Usuários  comum: <span id='comum'></span></h1></center> 
+ <center><h1>Usuários vips : <span id='vips'></span></h1></center>
+ <center><h1>Usuários parceiro: <span id='parveiro'></span></h1></center>
+ <center><h1>Usuários total: <span id='totaluser'></span></h1></center>
+ <center><h1>Locais: <span id='local'></span></h1></center>
+ <center><h1>Eventos: <span id='event'></span></h1></center>
+ <center><h1>Atracoes: <span id='atracoes'></span></h1></center>
+</font>
+</div>
+
+
+            
+ <script>
+                 $(document).ready(function() {
+ atualizaDados();
+});
+    //Executar a cada 10 segundos, para atualizar a qunatidade de usuários online
+    setInterval('atualizaDados()',3000);
+   function atualizaDados(){
+
+      //Incluir e enviar o POST para o arquivo responsável em fazer contagem
+      $.post("../index.php", {contar: ''}, function(data){
+
+        var date=data.substring(0,1);
+                var dateut=data.substring(9,11);
+                var dateuc=data.substring(2,4);
+                var dateuv=data.substring(5,6);
+        var dateup=data.substring(7,8);
+        var dateev=data.substring(12,14);
+        var datelc=data.substring(15,17);
+        var dateat=data.substring(18,19);
+
+        $('#online').text(date);
+          $('#comum').text(dateuc);
+          $('#vips').text(dateuv);
+          $('#parveiro').text(dateup);
+          $('#totaluser').text(dateut);
+         $('#local').text(dateev);
+          $('#event').text(datelc);
+         $('#atracoes').text(dateat);
+      });
+    }
+    </script>
+<!--e crie um arquivo no mesmo diretório chamado "contador.php"-->
+ 
+
+

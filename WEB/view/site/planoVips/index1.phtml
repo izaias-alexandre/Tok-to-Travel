@@ -1,0 +1,198 @@
+<style>
+
+
+	*{
+
+	margin-left:35px;
+
+}
+body{
+
+}
+
+li.valor{
+	margin-button:0px;
+	margin-left:35px;
+	font-size:50px;
+	list-style-type:none;
+	display:inline-block;
+	width:100px;
+	color:#FFF;
+	transition:0.5s;
+	padding-left: 50px;
+	padding-right: 125px;
+	padding-bottom: 250px;
+	padding-top: 200px;
+	border:1px solid #d5d5d5;
+	
+	
+}
+li.valor2{
+	margin-top:0px;
+	margin-left:35px;
+	font-size:18px;
+	list-style-type:none;
+	display:inline-block;
+	width:100px;
+	background-color:#32cd32;
+	color:#FFF;
+	transition:0.5s;
+	padding-left: 50px;
+	padding-right: 125px;
+	padding-bottom: 10px;
+	padding-top: 40px;
+	border:1px solid #d5d5d5;
+	
+}
+li.tipo {
+	margin-top:65px;
+	margin-left:35px;
+	margin-button:0;
+	font-size:20px;
+	list-style-type:none;
+	display:inline-block;
+	width:100px;
+	background-color:#32cd32;
+	color:#FFF;
+	transition:0.5s;
+	padding-left: 50px;
+	padding-right: 125px;
+	padding-top: 20px;
+	border:1px solid #d5d5d5;
+}
+li.valor:hover{
+	background-color:#32cd32;
+	padding-left: 50px;
+	padding-right: 125px;
+	padding-top: 300px;
+	
+	
+}
+
+
+.menu{
+	background-color:#FCF;
+	height:500px;
+}
+
+a{
+	text-decoration:none;
+}
+</style>
+<ul>
+<li class="tipo">NORMAL</li>
+<li class="tipo">ESPECIAL</li>
+<li class="tipo">TOP</li>
+<li class="valor"> Plano Mensal</li>
+<li class="valor"> Plano Semestral</li>
+<li class="valor"> Plano Anual</li>	
+
+<li class="valor2">R$ 10,00/mês<button id="mes" onclick="pagamentoMensal()">Assinar</button><br>
+<form id="item1" action="https://sandbox.pagseguro.uol.com.br/checkout/v2/payment.html" method="post" onsubmit="PagSeguroLightbox(this); return false;">
+<input type="hidden" id="code1" name="code" value="" />
+<input type="hidden" id="usuario1" value="<?php echo $_SESSION['id'];?>"/>
+</form>
+<script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
+<center><img src="content/site/img/load-indicator.gif" id="loading1" style="visibility: hidden"></center>
+</li>
+
+<li class="valor2">R$ 25,00/mês<button id="seis" onclick="pagamentoSemestral()">Assinar</button><br>
+<form id="item2" action="https://sandbox.pagseguro.uol.com.br/checkout/v2/payment.html" method="post" onsubmit="PagSeguroLightbox(this); return false;">
+<input type="hidden" id="code2" name="code" value="" />
+<input type="hidden" id="usuario2" value="<?php echo $_SESSION['id'];?>"/>
+</form>
+<script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
+<center><img src="content/site/img/load-indicator.gif" id="loading2" style="visibility: hidden"></center>
+</li>
+
+
+<li class="valor2">R$ 50,00/mês<button id="anual" onclick="pagamentoAnual()">Assinar</button><br>
+<form id="item3" action="https://sandbox.pagseguro.uol.com.br/checkout/v2/payment.html" method="post" onsubmit="PagSeguroLightbox(this); return false;">
+<input type="hidden" id="code3" name="code" value="" />
+<input type="hidden" id="usuario3" value="<?php echo $_SESSION['id'];?>"/>
+</form>
+<script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
+<center><img src="content/site/img/load-indicator.gif" id="loading3" style="visibility: hidden"></center>
+ </li>	
+
+</ul>
+
+<script>
+function pagamentoAnual(){
+    var data = new Date();
+    var dataFormatada = ("0" + data.getDate()).substr(-2) + "/" 
+    + ("0" + (data.getMonth() + 1)).substr(-2) + "/" + data.getFullYear();
+ $.ajax({
+   url : 'model/SalvarPagamento.php',
+   dataType : 'html',
+   type : 'POST',
+   data : { Usuario_id_userpgto : $('#usuario3').val(),plano : 'TOP',valor_pgto : '50,00',data_pedido : dataFormatada },
+   beforeSend : function () {
+         $('#loading3').css("visibility","visible");
+   },
+   success : function(retorno){
+        $.post('model/PagSeguro.php',{idPedido:retorno,plano : 'TOP',valor_pgto : '50.00'},function(data){
+            //alert(data);
+       $('#code3').val(data);
+       $('#item3').submit();
+    });
+         $('#loading3').css("visibility","hidden");
+   },
+   error : function(a,b,c){
+       $('#loading3').css("visibility","hidden");
+       alert('Erro: '+a[status]+' '+c);
+   }
+});
+
+ }
+ function pagamentoMensal(){
+    var data = new Date();
+    var dataFormatada = ("0" + data.getDate()).substr(-2) + "/" 
+    + ("0" + (data.getMonth() + 1)).substr(-2) + "/" + data.getFullYear();
+ $.ajax({
+   url : 'model/SalvarPagamento.php',
+   dataType : 'html',
+   type : 'POST',
+   data : { Usuario_id_userpgto : $('#usuario1').val(),plano : 'NORMAL',valor_pgto : '10,00',data_pedido : dataFormatada },
+   beforeSend : function () {
+         $('#loading1').css("visibility","visible");
+   },
+   success : function(retorno){
+        $.post('model/PagSeguro.php',{idPedido:retorno,plano : 'NORMAL',valor_pgto : '10.00'},function(data){
+       $('#code1').val(data);
+       $('#item1').submit();
+    });
+         $('#loading1').css("visibility","hidden");
+   },
+   error : function(a,b,c){
+       $('#loading1').css("visibility","hidden");
+       alert('Erro: '+a[status]+' '+c);
+   }
+});
+ }
+ function pagamentoSemestral(){
+    var data = new Date();
+    var dataFormatada = ("0" + data.getDate()).substr(-2) + "/" 
+    + ("0" + (data.getMonth() + 1)).substr(-2) + "/" + data.getFullYear();
+ $.ajax({
+   url : 'model/SalvarPagamento.php',
+   dataType : 'html',
+   type : 'POST',
+   data : { Usuario_id_userpgto : $('#usuario2').val(),plano : 'ESPECIAL',valor_pgto : '25,00',data_pedido : dataFormatada },
+   beforeSend : function () {
+         $('#loading2').css("visibility","visible");
+   },
+   success : function(retorno){
+        $.post('model/PagSeguro.php',{idPedido:retorno,plano : 'ESPECIAL',valor_pgto : '25.00'},function(data){
+       $('#code2').val(data);
+       $('#item2').submit();
+    });
+         $('#loading2').css("visibility","hidden");
+   },
+   error : function(a,b,c){
+       $('#loading2').css("visibility","hidden");
+       alert('Erro: '+a[status]+' '+c);
+   }
+});
+ }
+</script>

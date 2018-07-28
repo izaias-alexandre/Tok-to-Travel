@@ -1,0 +1,45 @@
+<div class="content">
+<a href="atracoes/formCadastro" class="botao01"> Nova Atracao</a>
+</div>
+<table width=100% border="1px" bgcolor="black">
+  <tr>
+    <td width="101" height="40" bgcolor="white" ><center>ID</center></td>
+    <td width="113"><center>Local Da Atração</center></td>
+    <td width="113"><center>Tipo Da Atração</center></td>
+    <td width="85"><center>Descrição</center></td>
+    <td width="85"><center>Status</center></td>
+    <td width="85"><center>Nome Da Atração</center></td>
+    <td width="85"><center>Referência</center></td>
+    <td width="85"><center>Duração Da Atração</center></td>
+    <td width="85"><center>Horário</center></td>
+    <td width="85"><center></center></td>
+    <td width="85"><center></center></td>
+
+   <!-- <td width="85"><center>DESCRICAO</center></td>-->
+  </tr>
+        <?php 
+        if(count($view_list)>0):?>
+        <?php foreach ($view_list as $li):?>
+             <tr>
+    <td height="40" bgcolor="white "><?php echo $li->id_atr;?></td>
+    <td bgcolor="white "><?php echo $li->Local_id_localatr;?></td>
+    <td bgcolor="white "><?php echo $li->tipo_atr;?></td>
+    <td bgcolor="white "><?php echo $li->desc_atr;?></td>
+    <td bgcolor="white "><?php echo $li->status_atr;?></td>
+    <td bgcolor="white "><?php echo $li->nome_atr;?></td>
+    <td bgcolor="white "><?php echo $li->localizacao;?></td>
+    <td bgcolor="white "><?php echo $li->dias_func;?></td>
+     <td bgcolor="white "><?php echo $li->horario;?></td>
+
+
+
+            <td>
+            <a href="atracoes/formCadastro/<?php echo $li->id_atr;?>" class="botao01">Editar</a></td><td>
+                <a href="atracoes/excluir/<?php echo $li->id_atr;?>/<?php echo $li->nome_atr;?>" class="botao01">Deletar</a>
+            </td>
+        </tr>
+        <?php endforeach;?>
+        <?php endif;?>
+    </tbody>
+</table>
+

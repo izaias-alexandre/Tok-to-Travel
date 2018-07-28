@@ -1,0 +1,82 @@
+<div class="content">
+<a href="usuario" class="botao01" >Voltar</a>
+</div>
+<form action="usuario/save" method="POST">
+<br><br>
+<label><h2>ID:</h2></label><input type="text" name="id_user" value="<?php echo $view_dados->id_user;?>" readonly class="input-class"><br>
+<label><label for="txtTipo" ></label><h2>Tipo:</h2> <input type="text" required id="txtTipo" placeholder="Digite O Tipo" name="tipo_user" class="input-class" value="<?php echo $view_dados->tipo_user;?>" /><br>
+<label for="txtNome" ></label><h2>Nome:</h2> <input type="text" required id="txtNome" placeholder="Digite seu Nome" name="nome_user" class="input-class" value="<?php echo $view_dados->nome_user;?>" /><br>
+<label for="txtSobrenome" ></label><h2>Sobrenome:</h2><input type="text" required id="txtSobrenome" placeholder="Digite seu Sobrenome" name="sobrenome_user" class="input-class" value="<?php echo $view_dados->sobrenome_user;?>"/><br>
+<label for="numFone"></label><h2>Telefone:</h2><input type="number" id="numFone" placeholder="Digite seu Telefone" required  name="tel_user" class="input-class" value="<?php echo $view_dados->tel_user;?>"/><br>
+<label for="txtEmail" ></label><h2>E-mail:</h2><input type="text" id="txtEmail" placeholder="Digite seu E-mail" required name="email_user" class="input-class" value="<?php echo $view_dados->email_user;?>"/><br>
+<label for="txtEndereco"></label><h2>Endereço:</h2><input type="text" id="txtEndereco"  name="end_user" class="input-class" placeholder="Digite seu Endereço" value="<?php echo $view_dados->end_user;?>"/><br>
+<?php if($view_dados->id_user == ''){?>
+<label><h2>Tipo de Usuario:</h2></label><select name="tipo_user" class="input-class" style="width: 115%;" >
+    <option></option>
+    <option>VIP</option>
+    <option>USUARIO</option>
+</select><br><br>
+
+<?php } ?>
+<?php if($view_dados->senha_user == '') { ?>
+<CENTER><label class="senha" for="txtsenha2"><h2>Senha:</h2></label><input  type="password" style="width: 100%;" name="senha_user" value="" class="input-class" id="txtsenha2" readonly/></CENTER> <br><br>
+<center><button type="button" onclick="GerarSenha(); return false" class="botao01"  >Gerar senha</button><br></center>
+<?php }else{?>
+<button type="button" class="botao01" >Nova senha</button><br>
+<input  type="hidden" name="senha_user" value="" class="senha" id="txtsenha2" readonly/> 
+<?php } ?>
+     <center><button type="submit" id="btnEnviar" class="botao01" >Enviar</button></center>
+   <br>
+</form></center>
+<script>
+       
+      // função dec2hex: converte números decimais em números hexadecimais */
+      function dec2hex(numero) {
+        var base = 16;
+        var digito = new Array();
+        var i = 0;
+
+        while (numero != 0) {
+          i++;
+          digito[i] = numero % base;
+          numero = Math.floor(numero / base);
+        }
+        value = "";
+        while (i >= 1)  {
+          switch (digito[i]) {
+            case 10: { value += "A"; break }
+            case 11: { value += "B"; break }
+            case 12: { value += "C"; break }
+            case 13: { value += "D"; break }
+            case 14: { value += "E"; break }
+            case 15: { value += "F"; break }
+            default: { value += digito[i]; break }
+          }
+          i--;
+        }
+        return value;
+      }
+
+      function GerarSenha() {
+        document.forms[0].senha_user.value = "";
+        tamanho = 8;
+
+       
+
+        // ajusta o tamanho (em pixels) do campo de acordo com o número de dígitos
+        document.forms[0].senha_user.style.width = (tamanho * 9) + "px";
+
+        // códigos ASCII decimais
+        min = 32;
+        max = 126;
+
+        for (i = 1; i <= tamanho; i++) {
+          caracter = min + Math.floor((Math.random() * (max - min)));  // 32 a 126
+          caracter = "%" + dec2hex(caracter);
+          caracter = unescape(caracter);
+          document.forms[0].senha_user.value += caracter;
+       
+        }
+       
+      }
+    </script>

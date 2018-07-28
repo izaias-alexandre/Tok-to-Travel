@@ -1,0 +1,100 @@
+<?php
+
+include_once 'core/Facebook/autoload.php';
+error_reporting(0);
+$fb = new Facebook\Facebook([
+  'app_id' => '221408635094591', // Replace {app-id} with your app id
+  'app_secret' => '75f6d9e40b09fc162d4868f1d7158cac',
+  'default_graph_version' => 'v2.12',
+  ]);
+  $helper = $fb->getRedirectLoginHelper();
+  
+ 
+$permissions = ['email']; // Optional permissions
+try {
+	if(isset($_SESSION['face_access_token']))
+	{
+	$accessToken = $_SESSION['face_access_token'];
+	}
+  else{
+	  $accessToken = $helper->getAccessToken();
+	}
+} catch(Facebook\Exceptions\FacebookResponseException $e) {
+  // When Graph returns an error
+  echo 'Graph returned an error: ' . $e->getMessage();
+  exit;
+} catch(Facebook\Exceptions\FacebookSDKException $e) {
+  // When validation fails or other local issues
+  echo 'Facebook SDK returned an error: ' . $e->getMessage();
+exit;
+
+}
+
+  if ( isset($accessToken)) {
+      
+	  $url_login = 'http://localhost:8080/MVCv5/site/login/loginfacebook';
+  $loginUrl = $helper->getLoginUrl($url_login, $permissions);
+  } 
+  else {
+    	  $url_login = 'http://localhost:8080/MVCv5/site/login/loginfacebook';
+  $loginUrl = $helper->getLoginUrl($url_login, $permissions);
+if(isset($_SESSION['face_access_token']))
+{
+	$fb->setDefaultAccessToken($_SESSION['face_access_token']);
+ }
+ else
+ {
+	 $_SESSION['face_access_token'] = (string)$accessToken;
+	 $oAuth2Client = $fb->getOAuth2Client();
+	 $_SESSION['face_access_token'] = $oAuth2Client->getLongLivedAccessToken($_SESSION['face_access_token']);
+	$fb->setDefaultAccessToken($_SESSION['face_access_token']);
+  /*var_dump($_SESSION['face_access_token']);*/
+  }
+  
+  try {
+  //Returns a `Facebook\FacebookResponse` object
+  $response = $fb->get('/me?fields=name,picture, email');
+	$user = $response->getGraphUser();
+	header ("Location: MVCv5/");
+  } catch(Facebook\Exceptions\FacebookResponseException $e) {
+  echo 'Graph returned an error: ' . $e->getMessage();
+  exit;
+} catch(Facebook\Exceptions\FacebookSDKException $e) {
+  echo 'Facebook SDK returned an error: ' . $e->getMessage();
+  exit;
+}
+
+  function loginFacebook($par_user)
+{
+   /* $dados = DBLer("usuario","login =".$par_user['email']);
+   // echo $dados;
+$indice = count($dados);
+
+if($dados == false){
+    echo 'usuario nao encontrado';
+    //depois aqui chamara para o cadastro das informações do token 
+}
+else{
+    if($indice == 1){
+    
+
+			//gravo as informações das variáveis dentro das sessões
+*/
+$_SESSION ['login'] = $par_user['name'];
+			
+			
+			
+header ("Location: http://localhost:8080/MVCv5/");
+        
+    }
+
+    
+}
+
+
+
+
+  
+
+?>
+

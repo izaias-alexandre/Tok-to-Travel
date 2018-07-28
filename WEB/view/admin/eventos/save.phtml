@@ -1,0 +1,11 @@
+<div class="content">
+<a href="eventos" class="botao01">Voltar</a>
+</div>
+<form enctype="multipart/form-data" method="POST" action="eventos/saveimg">
+        <input type="hidden" name="url" value="content/site/img/imgevento/"/>
+        <input type="hidden" name="id_alb" value="<?php if(isset($view_return)){echo $view_return;}?>"/>
+        <input type="hidden" name="tipo" value="evento"/>
+			<input type="file" name="arquivo[]" multiple="multiple" /><br><br>
+			<input name="enviar" class="botao01" type="submit" value="Enviar">
+</form>
+

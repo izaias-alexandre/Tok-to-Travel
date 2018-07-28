@@ -1,0 +1,67 @@
+<a href="usuario/formCadastro" class="botao01" >Novo usuario</a>
+<a href="usuario/vips" class="botao01">Pedidos para Vip</a>
+<a href="usuario/parceiro" class="botao01" >Parceiros</a>
+
+<table width=100% border="1px" bgcolor="black">
+  <tr>
+    <td width="101" height="40" bgcolor="white" ><center>ID</center></td>
+    <td width="113"><center>Nome</center></td>
+    <td width="113"><center>Sobrenome</center></td>
+    <td width="85"><center>Email</center></td>
+    <td width="85"><center>CPF</center></td>
+    <td width="85"><center>Telefone</center></td>
+    <td width="85"><center>Endereço</center></td>
+    <td width="85"><center>CEP</center></td>
+    <td width="85"><center>Estado</center></td>
+    <td width="85"><center>País</center></td>
+    <td width="85"><center>Número</center></td>
+    <td width="85"><center>Bairro</center></td>
+    <td width="85"><center>Cidade</center></td>
+    <td width="85"><center>Complemento</center></td>
+    <td width="85"><center>Avaliação</center></td>
+    <td width="85"><center>Tipo</center></td>
+    <td width="85"><center>Status</center></td>
+    <td width="85"><center></center></td>
+    <td width="85"><center></center></td>
+    
+
+   <!-- <td width="85"><center>DESCRICAO</center></td>-->
+  </tr>
+        <?php 
+        if(count($view_list)>0):?>
+        <?php foreach ($view_list as $li):?>
+        <tr>
+    <td height="40" bgcolor="white "><?php echo $li->id_user;?></td>
+    <td bgcolor="white "><?php echo $li->nome_user;?></td>
+    <td bgcolor="white "><?php echo $li->sobrenome_user;?></td>
+    <td bgcolor="white "><?php echo $li->email_user;?></td>
+    <td bgcolor="white "><?php echo $li->cpf_user;?></td>
+    <td bgcolor="white "><?php echo $li->tel_user;?></td>
+    <td bgcolor="white "><?php echo $li->end_user;?></td>
+    <td bgcolor="white "><?php echo $li->cep_user;?></td>
+    <td bgcolor="white "><?php echo $li->est_user;?></td>
+    <td bgcolor="white "><?php echo $li->pais_user;?></td>
+    <td bgcolor="white "><?php echo $li->num_end_user;?></td>
+    <td bgcolor="white "><?php echo $li->bai_user;?></td>
+    <td bgcolor="white "><?php echo $li->cid_user;?></td>
+    <td bgcolor="white "><?php echo $li->complemento_user;?></td>
+    <td bgcolor="white "><?php echo $li->avaliacao_user;?></td>
+    <td bgcolor="white "><?php echo $li->tipo_user;?></td>
+    <td bgcolor="white "><?php echo $li->status_user;?></td>
+            <td>
+                <div class="content">
+                <a  class="botao01" href="usuario/formCadastro/<?php echo $li->id_user;?>">Editar</a>
+            </div>
+        </td>
+        <td >
+            <div class="content">
+                <a class="botao01" href="usuario/excluir/<?php echo $li->id_user;?>/<?php echo $li->nome_user;?>">Deletar</a>
+            </div>
+            </td>
+        </tr>
+        <?php endforeach;?>
+        <?php endif;?>
+    </tbody>
+</table>
+
+

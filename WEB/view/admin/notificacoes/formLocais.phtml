@@ -1,0 +1,66 @@
+<style>
+    .x{
+        position: absolute;
+        cursor: pointer;
+    }
+</style>
+<?php
+date_default_timezone_set('America/Sao_Paulo');
+// CRIA UMA VARIAVEL E ARMAZENA A HORA ATUAL DO FUSO-HORÀRIO DEFINIDO (BRASÍLIA)
+ $dataLocal = date('d/m/Y H:i:s');
+?>
+<div class="content">
+<a href="notificacoes/locais/<?php echo $view_dados->cod_local;?>" class="botao01">Voltar</a>
+</div>
+<form action="notificacoes/saveLocais/<?php echo $this->getParams(2);?>" method="POST">
+<br><br>
+<label><h2>ID:</h2></label><input type="text" name="cod_local" class="input-class" value="<?php echo $view_dados->cod_local;?>" readonly><br>
+<input type="hidden" name="id_album" class="input-class" value="<?php echo $view_dados->id_album;?>">
+            <label for="txtNome" ><h2>Nome:</h2></label> <input type="text" class="input-class" value="<?php echo $view_dados->nome_loc;?>" class="form-poshytip" id="txtNome"  name="nome_loc" /></center><br>
+            <label for="txtEnd" ><h2>Endereço:</h2></label> <input type="text" class="input-class" value="<?php echo $view_dados->end_loc;?>"  id="txtEnd" name="end_loc" /><br><br>
+            <label for="numCEP" ><h2>CEP:</h2></label> <input type="text" class="input-class" id="numCEP" value="<?php echo $view_dados->cep_loc;?>" name="cep_loc" /><br><br>
+           <label for="numLoc" ><h2>Numero:</h2></label> <input type="number" class="input-class" value="<?php echo $view_dados->nro_loc;?>" id="numLoc" name="nro_loc" /><br><br>
+           <?php if($view_dados->cod_local != ''){?>
+           <label for="txtdata"><h2>Data de Cadastro:</h2></label><input type="text" class="input-class" id="txtdata" name="data_cad_loc" value="<?php echo $view_dados->data_cad_loc ;?>"/><br><br>
+           <?php }else {?>
+            <input type="hidden" id="txtEnd" name="data_cad_loc" class="input-class" value="<?php echo $dataLocal;?>"/><br><br>   
+           <?php }?>
+            <label for="txtDesc" ><h2>Descrição:</h2></label><br><textarea   rows="4" cols="50" class="input-class" name="desc_local" id="txtDesc"><?php echo $view_dados->desc_local;?></textarea><br><br>
+            <input type="hidden" name="bairro_loc" class="input-class" value="<?php echo  $view_dados->bairro_loc ; ?>"/>
+            <input type="hidden" name="comp_loc" class="input-class" avlue="<?php echo  $view_dados->comp_loc ;?>"/>
+            <input type="hidden" name="cidade_loc" class="input-class" value="<?php echo  $view_dados->cidade_loc ;?>"/>
+            <input type="hidden" name="tipo_local" class="input-class" value="<?php echo  $view_dados->tipo_local ;?>"/>
+           <h2> Site do Local:</h2><input type="text" class="input-class" name="site_loc"><br>
+          <?php foreach ($view_dados->caminho_img as $val){ ?>
+           <?php if($val->id_img != 186){  ?>
+               <img class="x" alt="<?php echo $val->id_img;?>" src="../content/site/img/mono-icons/stop32.png" />                                       
+              <?php } ?>
+            <img id="img<?php echo $val->id_img;?>" src="../<?php echo $val->caminho_img; ?>" alt="alt text" width="200" height="200"/><br>
+                                              
+                                                        <?php } ?>
+           <br>
+          
+     <?php if(isset($view_acao)){?>
+         <center><input type="submit" name="inserir" id="btnEnviar" class="botao01" value="Confirmar"></center>
+    <?php } else {?>
+  <center><button type="submit" id="btnEnviar" class="botao01">Enviar</button></center>
+ <?php }?>
+         <script>
+               $(".x").click(function(){
+      
+         var altx = $(this).attr("alt");
+          var selector = '#'+'img'+altx;
+      $.post("../model/excluirimg.php",{altx:altx}, function(resultado){
+         $(this).hide(); 
+        $(selector).hide();
+        
+        
+  });
+         
+     });
+         
+
+     </script>
+         
+   <br>
+</form>

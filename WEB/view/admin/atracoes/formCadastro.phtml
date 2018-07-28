@@ -1,0 +1,78 @@
+<?php
+date_default_timezone_set('America/Sao_Paulo');
+// CRIA UMA VARIAVEL E ARMAZENA A HORA ATUAL DO FUSO-HORÀRIO DEFINIDO (BRASÍLIA)
+ $dataLocal = date('d/m/Y H:i:s');
+?>
+<style>
+    .x{
+        position: absolute;
+        cursor: pointer;
+    }
+</style>
+<div class="content">
+<a href="atracoes" class="botao01">Voltar</a>
+</div>
+<form action="atracoes/save" method="POST" enctype="multipart/form-data">
+<br><br>
+<label><h2>ID:</h2></label><input type="text" name="id_atr" value="<?php echo $view_dados->id_atr;?>" class="input-class" readonly><br>
+            <input type="hidden" name="id_album" value="<?php echo $view_dados->id_album;?>"/>
+               <input type="hidden" name="url" value="content/site/img/imgAtracoes/"/>
+               <?php  if($view_dados->id_atr != ''){?>
+            <label for="txtNome" ><h2>Nome:</h2></center></label> <input type="text" value="<?php echo $view_dados->nome_atr;?>"  class=" input-class "  id="txtNome"  name="nome_atr" /><br>
+ <label for="txtNome" ><h2>Referencia:</h2></center></label> <input type="text"  id="txtNome"  name="localizacao" class=" input-class " value="<?php echo $view_dados->localizacao;?>" /></center><br>
+    <label for="txtNome" ><h2>Dias de funcionamento:</h2></center></label> <input type="text"  id="txtNome"  name="dias_func" class=" input-class " value="<?php echo $view_dados->dias_func;?>"/></center><br>
+    <label for="txtNome" ><h2>Horario:</h2></center></label> <input type="text" id="txtNome"  name="horario" class=" input-class " value="<?php echo $view_dados->horario;?>"/></center><br>
+
+          <?php } else{?>
+  <label for="txtNome" ><h2>Nome:</h2></center></label> <input type="text" value=""  id="txtNome"  name="nome_atr" class=" input-class " /></center><br>
+    <label for="txtLocal"><h2>Local da Atração:</h2></center></label>
+    <select id="txtLocal" name="Local_id_localatr" class=" input-class ">
+      <?php $local = $this->CarregarLocais();
+      foreach($local as $loc){?>
+        <option value="<?php echo $loc->cod_local;?>"><?php echo $loc->nome_loc;?></option>
+      <?php } ?>
+    </select><br><br>
+   <label for="txtNome" ><h2>Referencia:</h2></center></label> <input type="text" value=""  id="txtNome"  name="localizacao" class=" input-class " /></center><br>
+    <label for="txtNome" ><h2>Dias de funcionamento:</h2></center></label> <input type="text" value=""  id="txtNome"  name="dias_func" class=" input-class " /></center><br>
+    <label for="txtNome" ><h2>Horario:</h2></center></label> <input type="text" value=""  id="txtNome"  name="horario" class=" input-class " /></center><br>
+            <?php } ?>
+ 
+        
+            <label for="txtDesc" ><h2>Descrição:</h2></label><br><textarea   rows="4" cols="50" name="desc_atr" id="txtDesc" class=" input-class "><?php echo $view_dados->desc_atr;?></textarea><br><br>
+            <?php if($view_dados->id_atr != ''){?>
+    <?php if($view_dados->id_album  == null){ ?>
+             <!-- <img class="x" alt="" src="../content/site/img/mono-icons/stop32.png" />    -->                           
+            <img id="img" src="../content/site/img/imgAtracoes/<?php echo $view_dados->nome_img_atr; ?>" alt="" width="200" height="200"/>
+                                       
+                                                        <?php } else{?>
+ <?php foreach ($view_dados->caminho_img as $val){ ?>
+            
+              <img class="x" id="<?php echo $val->id_img;?>" alt="<?php echo $val->id_img;?>" src="../content/site/img/mono-icons/stop32.png" />                               
+            <img id="img<?php echo $val->id_img;?>" src="../<?php echo $val->caminho_img; ?>" alt="" width="200" height="200"/>
+                                       
+                <?php } ?>
+           <br>
+            <?php } ?>
+             <?php } ?>
+     <br><br><br>
+     <script>
+               $(".x").click(function(){
+      
+         var altx = $(this).attr("alt");
+          var selector = '#'+'img'+altx;
+          var alt = '#'+altx;
+      $.post("../model/excluirimg.php",{altx:altx}, function(resultado){
+        alert(resultado);
+         $(alt).hide(); 
+        $(selector).hide();
+        
+        
+  });
+         
+     });
+         
+
+     </script>
+     <center><button type="submit" id="btnEnviar" class="botao01" >Enviar</button></center>
+   <br>
+</form>

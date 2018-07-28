@@ -1,0 +1,27 @@
+<div class="content">
+<a href="notificacoes/" class="botao01">Voltar</a>
+</div>
+<table>
+    <tbody>
+        <tr>
+            <th>ID</th>
+            <th>Parceiro</th>
+            <th>Local</th>
+        </tr>
+        <?php 
+        //var_dump($view_list);
+        if(count($view_list)>0):?>
+        <?php foreach ($view_list as $li):?>
+        <tr>
+            <td><?php echo $li->id_serv;?></td>
+            <td><?php echo $li->Parceiro_id_par;?></td>
+            <td><?php echo $li->Local_id_local;?></td>
+            <td>
+                <a href="notificacoes/excluirServico/<?php echo $li->id_serv;?>/<?php echo $li->nome_serv;?>/<?php echo $this->getParams(1)?>" class="botao01">Deletar</a>
+                <a href="notificacoes/saveServico/<?php echo $li->id_serv;?>/<?php echo $this->getParams(1)?>" class="botao01">Inserir</a>
+            </td>
+        </tr>
+        <?php endforeach;?>
+        <?php endif;?>
+    </tbody>
+</table>

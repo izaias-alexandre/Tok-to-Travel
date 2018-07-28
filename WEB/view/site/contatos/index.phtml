@@ -1,0 +1,85 @@
+<div id="main">
+      <div>
+      
+      
+        
+      <!-- page content-->
+          <div id="page-content" class="cf">          
+              
+            
+            
+        
+        
+        <!-- Map -->
+        <!--<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true" /></script>
+        <script type="text/javascript">
+          function initialize() {
+            var latlng = new google.maps.LatLng(-34.397, 150.644);
+            var myOptions = {
+              zoom: 8,
+              center: latlng,
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
+          var map = new google.maps.Map(document.getElementById("map_canvas"),
+              myOptions);
+          }
+        </script>
+-->        <div class="wrapper cf">
+        <div id="map-holder">
+          <div id="map_canvas"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.3585566833976!2d-46.59814528493795!3d-23.51960288470368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce58cbc5bfbf33%3A0xabc0b13f35ba14cf!2sEtec+Professor+Hor%C3%A1cio+Augusto+da+Silveira!5e0!3m2!1spt-BR!2sbr!4v1520372240463" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe></div>
+          <div id="map-content">
+            <p><h3>DESENVOLVEDORES</h3></p>
+            
+            <p>E-mail: e064acad@cps.sp.gov.br , E-mail secretaria@etechoracio.com.br , Site: www.etechoracio.com.br</p>
+          </div>
+        </div>
+        </div>
+        <!-- ENDS Map -->
+        
+        
+        <center><p><h2>CONTATO</h2></p></center>
+        <center><p>ENTRE EM CONTATO CONOSCO!</p></center>
+        <!-- form -->
+        <script type="text/javascript" src="js/form-validation.js"></script>
+        <form  action="site/contatos/save" method="post">
+          <fieldset>
+                            
+            <h3>
+              <center><label for="name" >NOME</label><br></center>
+              <center><input name="name" class="input-class"  id="name" type="text" placeholder="Digite o Nome"  title="Enter your full name" /></center>
+            </h3><br>
+            
+            <h3>
+              <center><label for="email" >EMAIL</label><br></center>
+              <center><input name="email"  id="email" class="input-class"  type="email" placeholder="Digite o Email" class="form-poshytip" title="Enter your email address" /></center>
+            </h3><br>
+            
+            <h3>
+              <center><label for="web">NOME DA EMPRESA</label><br></center>
+              <center><input name="web"  id="web" type="text" placeholder="Digite o Nome Da Empresa" class="input-class" title="Enter your website" /></center>
+            </h3><br>
+            
+            <h3>
+              <center><label for="comments">MENSAGEM</label></center>
+              <center><textarea  name="comments"  id="comments" class="input-class" placeholder="Digite a Mensagem" rows="5" cols="20" class="form-poshytip" title="Enter your comments"></textarea></center>
+            </h3><br>
+            
+          
+            
+            
+            <center><p><button type="submit" class="send"> Enviar </button></p></center>
+              <!--v<input type="submit" value="ENVIAR" name="submit" id="submit" />--><!--<span id="error" class="warning">MENSAGEM</span></p>-->
+          </fieldset>
+          
+        </form>
+        <!--<p id="sent-form-msg" class="success">Form data sent. Thanks for your comments.</p>
+        <!-- ENDS form -->        
+        
+        </div>
+        <!-- ENDS page content-->
+      
+      
+      
+      </div><!-- ENDS WRAPPER -->
+    </div>
+    <!-- ENDS MAIN -->

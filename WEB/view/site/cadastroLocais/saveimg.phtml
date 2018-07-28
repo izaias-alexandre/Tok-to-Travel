@@ -1,0 +1,58 @@
+<head>
+<link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet">
+</head>
+<style>
+  .test{
+    font-size: 24px;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    color: #424250;
+  }
+  .inicio{
+    font-size:40px;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+  }
+    .box{
+  margin-width: 50px;
+  margin-height: 50px;
+  margin-left: 50px;
+  margin-top: 50px;
+  }
+</style>
+<body><br>
+<center><h3><div class="inicio">OBRIGADO POR SUA CONTRIBUIÇÃO!</div></h3></center>
+  <br>
+  <br>
+
+
+
+
+
+<font size="2" face="Arial">
+
+<center><h1><div class="test">Nome Do Local:  <?php echo $view_dados->nome_loc; ?></div></h1></center><br>
+<center><h1><div class="test">CEP:  <?php echo $view_dados->cep_loc; ?></div></h1></div></center><br>
+<center><h1><div class="test">Logradouro:  <?php echo $view_dados->end_loc; ?></h1></div></center><br>
+<center><h1><div class="test">Número Do Local:  <?php echo $view_dados->nro_loc; ?></div></h1></center><br>
+<center><h1><div class="test">Complemento: <?php echo $view_dados->comp_loc; ?></div></h1></center><br>
+<center><h1><div class="test">Bairro:  <?php echo $view_dados->bairro_loc; ?></div></h1></center><br>
+<center><h1><div class="test">Cidade:  <?php echo $view_dados->cidade_loc; ?></div></h1></center><br>
+<center><h1><div class="test">Descrição:  <?php echo $view_dados->desc_local; ?></div></h1></center><br><br>
+
+</font>
+
+<center>         <?php foreach ($view_dados->caminho_img as $val){ ?>                              
+           <img id="img" src="<?php echo $val->caminho_img; ?>" alt="<?php echo $view_return;?>" width="200" height="200"/>
+          
+                     
+                                                        <?php } ?></center><br><br>
+
+<font size="2" face="Arial">
+
+<center><h3> <div class="inicio">INFORMAÇOES SALVA, AGUARDANDO RESPOSTA DOS ADMINISTRADORES.</div></h3></center>
+
+</font><br><br>
+
+</body>
+<center><a href="site/cadastroLocais/">Cadastar Mais Locais</a></center>
+
+

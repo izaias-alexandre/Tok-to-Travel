@@ -1,0 +1,46 @@
+<div class="content">
+<a href="locais/formCadastro" class="botao01"> Novo  Local</a>
+</div>
+<table width=100% border="1px" bgcolor="black">
+  <tr>
+    <td width="101" height="40"  bgcolor="white" ><center>ID</center></td>
+    <td width="113"><center>NOME</center></td>
+    <td width="113"><center>DATA</center></td>
+    <td width="85"><center>CEP</center></td>
+    <td width="85"><center>LOGRADOURO</center></td>
+    <td width="85"><center>NUMERO</center></td>
+    <td width="85"><center>COMPLEMENTO</center></td>
+    <td width="85"><center>BAIRRO</center></td>
+    <td width="85"><center>CIDADE</center></td>
+    <td width="85"><center>DESCRICAO</center></td>
+    <td width="85"><center></center></td>
+    <td width="85"><center></center></td>
+
+  </tr>
+   <?php 
+        //var_dump($view_list);
+        if(count($view_list)>0):?>
+        <?php foreach ($view_list as $li):?>
+  <tr>
+    <td height="40" bgcolor="white "><?php echo $li->cod_local;?></td>
+    <td bgcolor="white"><?php echo  $li->nome_loc;?></td>
+    <td bgcolor="white "><?php echo $li->data_cad_loc;?></td>
+    <td bgcolor="white "><?php echo $li->cep_loc;?></td>
+    <td bgcolor="white "><?php echo $li->end_loc;?></td>
+    <td bgcolor="white "><?php echo $li->nro_loc;?></td>
+    <td bgcolor="white "><?php echo $li->comp_loc;?></td>
+    <td bgcolor="white "><?php echo $li->bairro_loc;?></td>
+    <td bgcolor="white "><?php echo $li->cidade_loc;?></td>
+     <td bgcolor="white "><?php echo $li->desc_local;?></td>
+            <td>
+                <a href="locais/formCadastro/<?php echo $li->cod_local;?>" class="botao01">Editar</a>
+                </td>
+                <td>
+                <a href="locais/excluir/<?php echo $li->cod_local;?>/<?php echo $li->nome_loc;?>" class="botao01" >Deletar</a>
+            </td>
+        </tr>
+        <?php endforeach;?>
+        <?php endif;?>
+</table>
+
+

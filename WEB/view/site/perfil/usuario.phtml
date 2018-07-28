@@ -1,0 +1,81 @@
+ <script>
+                                    $(document).ready(function(){
+                                         $("li").removeClass('current-menu-item');
+                                        $(".entrar").addClass('current-menu-item');
+ });
+                                    </script>
+                                    <?php
+date_default_timezone_set('America/Sao_Paulo');
+// CRIA UMA VARIAVEL E ARMAZENA A HORA ATUAL DO FUSO-HORÀRIO DEFINIDO (BRASÍLIA)
+ $dataLocal = date('d/m/Y H:i:s');
+?>
+<form  name="frmForm" action="site/perfil/save" method="POST">
+    <center><h1>Meu Perfil</h1><br></center>
+<br><br>
+<center><input type="hidden" name="id_user" value="<?php echo $view_dados->id_user;?>" ><br></center>
+<center><label for="txtNome" ></label>Nome: <input type="text" required id="txtNome" class="input-class" placeholder="Digite seu Nome" name="nome_user" class="box7" value="<?php echo $view_dados->nome_user;?>" /></center><br><br>
+<center><label for="txtSobrenome" ></label>Sobrenome: <input type="text" required id="txtSobrenome" class="input-class" placeholder="Digite seu Sobrenome" name="sobrenome_user" class="box7" value="<?php echo $view_dados->sobrenome_user;?>"/></center><br><br>
+<center><label for="numFone"></label>Telefone: <input type="number" id="numFone" class="input-class" placeholder="Digite seu Telefone" required  name="tel_user" class="box7" value="<?php echo $view_dados->tel_user;?>"/></center><br><br>
+<center><label for="txtEmail" ></label>E-mail: <input type="text" id="txtEmail" class="input-class" placeholder="Digite seu E-mail" required name="email_user" class="box7" value="<?php echo $view_dados->email_user;?>"/></center><br><br>
+<center><label for="txtEndereco"></label>Endereço: <input type="text" id="txtEndereco" class="input-class"  name="end_user" class="box7" placeholder="Digite seu Endereço" value="<?php echo $view_dados->end_user;?>"/></center><br><br>   <br><br>
+<center><input type="button" id="btnSenha"  class="send"  value="mudar senha"/></center> <br><br>
+<div class="vvv">
+<center><label class="senha" for="txtsenha1">Senha antiga:</label><input  type="password" class="senha input-class" id="txtsenha1" /></center> <br><br>
+<center><label class="senha" for="txtsenha2">Nova senha:</label><input  type="password"  class="senha input-class" id="txtsenha2" /></center> <br><br>
+<center><label class="senha" for="txtsenha3">comfirme senha:</label><input type="password" name="senha_user" class="senha input-class" id="txtsenha3" /></center><br><br>
+</div>
+<center><button type="submit" class="send" id="btnEnviar" onclick="return senhas();">Enviar</button></center><br><br><br>
+</form>   
+                                    <?php
+//var_dump($_SESSION);
+	if($_SESSION['tipo'] == 'VIP')
+	{
+	?>
+<center>	<a href="site/telaAlbum/" class="send"> Album </a><br><br><br>
+<?php
+} else if($_SESSION['tipo']=='PARCEIRO'){?>
+<center><h1>Serviços</h1></center>
+
+
+<center><h3>Adicionar Serviços</h3></center>
+<form action="perfil/saveserv" method="POST">
+   <center> <label>Nome do Serviço</label></center><br><center><input type="text" class="input-class"  required id="txtNome" placeholder="Digite seu Nome" name="nome_serv" class="box7"  /></center><br><br>
+    <center> <label for="txtLocal">Local da Atracao:</label></center><br>
+    <center><select id="txtLocal"  class="input-class"  name="Local_id_local">
+      <?php $local = $this->CarregarLocais();
+      foreach($local as $loc){?>
+        <option value="<?php echo $loc->cod_local;?>"><?php echo $loc->nome_loc;?></option>
+      <?php } ?>
+    </select></center><br>
+    <input type="hidden" required id="txtNome" placeholder="Digite seu Nome" name="Parceiro_id_par" class="box7" value="<?php echo $view_dados->id_parceiro;?>" /> 
+    <input type="hidden" required id="txtNome" placeholder="Digite seu Nome" name="data_cad_serv" class="box7" value="<?php echo $dataLocal;?>" />
+     <center><label>Descricao do serviço</label></center><br><center><textarea class="input-class"  name="desc_serv"> </textarea></center> <br><br>
+      <center><button type="submit" class="send" id="btnEnviarServ">Enviar</button></center><br><br><br>
+    </form>
+<?php }else{ ?>
+<center><a href="site/planoVips" class="send">SEJA UM VIP</a></center><br><br><br>
+<?php } ?>
+<script>
+    $('.vvv').css("display","none");
+    $('#btnSenha').click(function(){
+      
+        $('.vvv').slideToggle();
+      
+
+      
+    });
+      function senhas(){
+            var senha1 = document.getElementById('txtsenha2').value;
+            var senha2 = document.getElementById('txtsenha3').value;
+            var senha3 = document.getElementById('txtsenha1').value; 
+            var senha4 = '<?php echo $view_dados->senha_user;?>'
+        if(senha1 != senha2){
+            alert("senhas não conferem");
+            return false;
+        }
+        if(senha3 != senha4){
+         alert("senha antiga nao confere");
+            return false;
+    }
+    }
+</script>

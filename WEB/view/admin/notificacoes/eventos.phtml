@@ -1,0 +1,52 @@
+<div class="content">
+<a href="notificacoes/" class="botao01">Voltar</a>
+</div>
+<table width=100% border="1px" bgcolor="black">
+  <tr>
+    <td width="101" height="40" bgcolor="white"><center>ID</center></td>
+    <td width="113"><center>NOME</center></td>
+    <td width="113"><center>DATA</center></td>
+    <td width="85"><center>HORÁRIO</center></td>
+    <td width="85"><center>LOCAL</center></td>
+    <td width="85"><center>CEP</center></td>
+    <td width="85"><center>ENDEREÇO</center></td>
+    <td width="85"><center>NÚMERO</center></td>
+    <td width="85"><center>COMPLEMENTO</center></td>
+    <td width="85"><center>BAIRRO</center></td>
+    <td width="85"><center>CIDADE</center></td>
+    <td width="85"><center>NOME DA IMAGEM</center></td>
+    <td width="85"><center>DESCRIÇÃO</center></td>
+     <td width="85"><center>CATEGORIA</center></td>
+      <td width="85"><center></center></td>
+
+   <!-- <td width="85"><center>DESCRICAO</center></td>-->
+  </tr>
+   <?php 
+        //var_dump($view_list);
+        if(count($view_list)>0):?>
+        <?php foreach ($view_list as $li):?>
+  <tr>
+    <td height="40" bgcolor="white "><?php echo $li->cod_evento;?></td>
+    <td bgcolor="white"><?php echo  $li->nome_evento;?></td>
+    <td bgcolor="white "><?php echo $li->data_evento;?></td>
+    <td bgcolor="white "><?php echo $li->hr_evento;?></td>
+    <td bgcolor="white "><?php echo $li->local_evento;?></td>
+    <td bgcolor="white "><?php echo $li->evento_CEP;?></td>
+    <td bgcolor="white "><?php echo $li->evento_end;?></td>
+    <td bgcolor="white "><?php echo $li->evento_nro;?></td>
+    <td bgcolor="white "><?php echo $li->evento_comp;?></td>
+    <td bgcolor="white "><?php echo $li->evento_bairro;?></td>
+    <td bgcolor="white "><?php echo $li->evento_cidade;?></td>
+    <td bgcolor="white "><?php echo $li->nome_img_evento;?></td>
+    <td bgcolor="white "><?php echo $li->desc_evento;?></td>
+    <td bgcolor="white "><?php echo $li->categoria;?></td>
+
+            <td>
+                <a href="notificacoes/excluirEventos/<?php echo $li->cod_evento;?>/<?php echo $li->nome_evento;?>/<?php echo $this->getParams(1)?>" class="botao01">Deletar</a>
+                <a href="notificacoes/formEventos/<?php echo $li->cod_evento;?>/inserir/<?php echo $this->getParams(1)?>" class="botao01">Inserir</a>
+            </td>
+        </tr>
+        <?php endforeach;?>
+        <?php endif;?>
+    </tbody>
+</table>

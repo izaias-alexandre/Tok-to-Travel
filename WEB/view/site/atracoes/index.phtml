@@ -1,0 +1,93 @@
+ <script>
+                                    $(document).ready(function(){
+                                         $("li").removeClass('current-menu-item');
+                                        $(".home").addClass('current-menu-item');
+                                        
+ });
+                                    </script>
+<div id="main">
+      <div class="wrapper cf">
+      
+      
+        
+      <!-- portfolio content-->
+          <div id="portfolio-content" class="cf">          
+        
+        
+        
+        <?php $loc = $this->index();
+ foreach ($loc as $abb){
+                                ?>    
+        <!-- project pager -->
+        <div class="project-pager cf">
+          <a class="previous-project" href="locais/index/<?php  echo $abb->Local_id_localatr; ?>">&#8592; Voltar</a>
+          
+        </div>
+        <!-- ENDS project pager -->
+          
+          
+          <!-- project box -->
+        <div id="project-box" class="cf">
+        
+        
+          
+        
+        
+          <!-- slider -->
+          <div class="project-slider">
+                <div class="flexslider">
+            <div style="border:solid white 10px">
+              <ul class="slides">
+                
+                                                       
+                                                      <li>
+                <img src="<?php echo $abb->caminho_img; ?>" alt="alt text" />
+                                                      </li>
+                                                  
+                                                  </ul>
+              </div>
+            </div>
+          </div>
+              <!-- ENDS slider -->
+
+
+          <div class="info">
+                <p><?php  echo $abb->horario; ?></p>
+                                        <p><?php  echo $abb->dias_func; ?></p>
+                                        <p><?php  echo $abb->localizacao; ?></p>
+              
+                                   
+                                       
+                                        
+              </div>
+                      
+                                
+              <!-- entry-content -->
+              <div class="entry-content">
+              
+                <h2 class="heading"><?php echo $abb->nome_atr; ?></h2>
+                
+                <div class="multicolumn">
+                <p><?php echo $abb->desc_atr;?></p>
+                
+                </div>
+                              
+              </div>
+                                </div>
+              <!-- ENDS entry content -->
+              
+
+            
+          <!-- ENDS project box -->
+          
+          
+        <!-- related -->
+    
+  
+        </div>
+        <!-- ENDS portfolio content-->
+      
+       <?php } ?>
+      
+      </div><!-- ENDS WRAPPER -->
+    </div>

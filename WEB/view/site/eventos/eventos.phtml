@@ -1,0 +1,172 @@
+<?php $eve = $this->eventos();
+$data = $eve->data_evento;
+$data = explode("-", $data);
+$dia = array_pop($data);
+$mes = array_pop($data);
+$jd=gregoriantojd($mes,$dia,$data[0]);
+$mes = jdmonthname($jd,0);
+?>
+ <script>
+                                    $(document).ready(function(){
+                                         $("li").removeClass('current-menu-item');
+                                        $(".eventos").addClass('current-menu-item');
+ });
+                                    </script>
+                                    <style>
+                                    .estrelas input[type=radio]{
+  display: none;
+}.estrelas label i.fa:before{
+  content: '\f005';
+  color: #FC0;
+  font-size:30px;
+}.estrelas  input[type=radio]:checked  ~ label i.fa:before{
+  color: #CCC;
+  
+}
+                                </style>
+<div id="main">
+      <div class="wrapper cf">
+      
+      
+      <!-- masthead -->
+      <div class="masthead cf">
+        EVENTOS SP
+      </div>
+      <!-- ENDS masthead -->
+      
+      
+        
+      <!-- posts list -->
+          <div id="posts-list" class="cf">          
+              
+              
+        <!-- Standard -->
+        <article class="format-standard">
+          <div class="project-slider">
+                <div class="flexslider">
+            <div style="border:solid white 10px">
+              <ul class="slides">
+                
+                                                        <?php foreach ($eve->caminho_img as $val){ ?>
+                                                      <li>
+                <img src="<?php echo $val->caminho_img; ?>" alt="alt text" />
+                                                      </li>
+                                                        <?php } ?>
+                                                  </ul>
+              </div>
+            </div>
+          </div>
+          <div class="box cf">
+            <div class="entry-date"><div class="number"><?php echo $dia; ?></div><div class="month"><?php echo $mes; ?></div></div>
+            
+            <div class="excerpt">
+              <div class="post-heading" ><?php echo $eve->nome_evento; ?></div>
+              <div class="entry-content">
+              
+              <p><?php echo $eve->desc_evento;?></p>  
+
+              </div>
+              
+   <iframe
+  width="400"
+  height="400"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDdCJdHEqxHNAwMuuTzsx6HzKNx5nswz1M
+    &q=<?php echo $eve->evento_end;?>+,<?php echo $eve->evento_nro;?>+-+<?php echo $eve->evento_bairro;?>+-+<?php echo $eve->evento_cidade;?>+-+SP+-+Brazil" allowfullscreen>
+</iframe>
+            </div>
+            
+            <div class="meta">
+              <p>Deixe sua Avaliação</p><br>
+                                        <form id="Avaliar" method="POST" action="site/eventos/avalia" enctype="multipart/form-data">
+      <div class="estrelas">
+                               <?php $exibir = 'checked'; if($eve->avaliacao == 0 || $eve->nota == 0){$media=0;}else{$media = $eve->nota / $eve->avaliacao;}?>
+                                               <h3><?php  $media = number_format($media,'1');
+echo $media; ?></h3>
+        <input type="radio" id="vazio" name="nota" value="" <?php if(round($media) == 0){echo $exibir;}?>>
+        
+        <label for="estrela_um"><i class="fa"></i></label>
+        <input type="radio" id="estrela_um" name="nota" value="1" <?php if(round($media) == 1){echo $exibir;}?>>
+        
+        <label for="estrela_dois"><i class="fa"></i></label>
+                                <input type="radio" id="estrela_dois" name="nota" value="2" <?php if(round($media) == 2){echo $exibir;}?>>
+        
+        <label for="estrela_tres"><i class="fa"></i></label>
+        <input type="radio" id="estrela_tres" name="nota" value="3" <?php if(round($media) == 3){echo $exibir;}?>>
+        
+        <label for="estrela_quatro"><i class="fa"></i></label>
+        <input type="radio" id="estrela_quatro" name="nota" value="4" <?php if(round($media) == 4){echo $exibir;}?>>
+                                <input type="hidden" name="cod_evento" id="ideve" value="<?php echo $eve->cod_evento;?>">
+        <label for="estrela_cinco"><i class="fa"></i></label>
+        <input type="radio" id="estrela_cinco" name="nota" value="5" <?php if(round($media) == 5){echo $media;}?>><br><br>
+         <p><?php echo $eve->avaliacao; ?>
+                                  Avaliações
+                                </p>
+                                <button type="submit"><img src="content/site/img/mono-icons/linedpapercheck32.png" /></button>
+        
+      </div>
+    </form>
+
+            </div>
+              
+          </div>
+        </article>
+                          
+                                    <!-- ENDS  Standard -->
+          
+          
+                      <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.12';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+      <div class="fb-comments" data-href="http://localhost/MVCv5/site/eventos/eventos/<?php echo $eve->cod_evento; ?>" data-width="700" data-numposts="10"></div>
+                    
+        
+        </div>
+        <!-- ENDS posts list -->
+      
+      <!-- sidebar -->
+          <!--<aside id="sidebar">
+            
+            <ul>
+              <li class="block">
+                <h4>Text Widget</h4>
+            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. 
+              </li>
+              
+              <li class="block">
+                <h4>Categories</h4>
+            <ul>
+              <li class="cat-item"><a href="#" title="title">Film and video<span class="post-counter"> (2)</span></a></li>
+              <li class="cat-item"><a href="#" title="title">Print<span class="post-counter"> (2)</span></a></li>
+              <li class="cat-item"><a href="#" title="title">Photo and lomo<span class="post-counter"> (2)</span></a></li>
+              <li class="cat-item"><a href="#" title="title">Habitant morbi<span class="post-counter"> (2)</span></a></li>
+              <li class="cat-item"><a href="#" title="title">Film and video<span class="post-counter"> (2)</span></a></li>
+              <li class="cat-item"><a href="#" title="title">Print<span class="post-counter"> (2)</span></a></li>
+              <li class="cat-item"><a href="#" title="title">Photo and lomo<span class="post-counter"> (2)</span></a></li>
+              <li class="cat-item"><a href="#" title="title">Habitant morbi<span class="post-counter"> (2)</span></a></li>
+            </ul>
+              </li>
+              
+              <li class="block">
+                <h4>Archives</h4>
+            <ul>
+              <li class="cat-item"><a href="#" title="title">January</a></li>
+              <li class="cat-item"><a href="#" title="title">February</a></li>
+              <li class="cat-item"><a href="#" title="title">March</a></li>
+            </ul>
+              </li>
+            
+            </ul>
+            
+          </aside>-->
+      <!-- ENDS sidebar -->
+      
+      
+      </div><!-- ENDS WRAPPER -->
+    </div>
+

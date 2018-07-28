@@ -1,0 +1,64 @@
+<style>
+    .x{
+        position: absolute;
+        cursor: pointer;
+    }
+</style>
+<div class="content">
+<a href="notificacoes/eventos/<?php echo $view_dados->cod_evento;?>" class="botao01">Voltar</a>
+</div>
+<form action="notificacoes/saveEventos/<?php echo $this->getParams(2);?>" method="POST">
+<br><br>
+<label><h2>ID:</h2></label><input type="text" class="input-class" name="cod_evento" value="<?php echo $view_dados->cod_evento;?>" readonly><br>
+<input type="hidden" name="id_album" value="<?php echo $view_dados->id_album;?>">
+   <label for="txtNome" ><h2>Nome:</h2></label> <input type="text"  class="input-class" value="<?php echo $view_dados->nome_evento;?>" id="txtNome"  name="nome_evento" /><br>
+            <label for="data" ><h2>Data:</h2></label> <input type="date"  class="input-class" value="<?php echo $view_dados->data_evento;?>" id="data" name="data_evento" /><br>
+          <?php if($view_dados->cod_evento != '') {?> 
+            <label for="hora" ><h2>Horario:</h2></label> <input type="text"  class="input-class" value="<?php echo $view_dados->hr_evento;?> "id="hora" name="hr_evento" /><br>
+ <?php }else{?>
+           <label for="hora" ><h2>Horario:</h2></label> <input type="time"  class="input-class" value="<?php echo $view_dados->hr_evento;?> "id="hora" name="hr_evento" /><br> 
+ <?php }?>
+            <label for="txtLoc" ><h2>Local:</h2></label> <input type="text"  class="input-class" value="<?php echo $view_dados->local_evento;?>" id="txtLoc" name="local_evento" /><br>
+
+            <h2>CEP:</h2><input type="text" class="input-class" value="<?php echo $view_dados->evento_CEP;?>" id="txtLoc" name="evento_CEP" /><br>
+
+          <h2>Endereço: </h2> <input type="text" class="input-class" value="<?php echo $view_dados->evento_end;?>" id="txtLoc" name="evento_end" /><br>
+           <h2> Nº:</h2><input type="text" class="input-class" value="<?php echo $view_dados->evento_nro;?>" id="txtLoc" name="evento_nro" /><br>
+           <h2> Complemento:</h2><input type="text" class="input-class" value="<?php echo $view_dados->evento_comp;?>" id="txtLoc" name="evento_comp" /><br>
+            <h2>Bairro:</h2><input type="text" class="input-class" value="<?php echo $view_dados->evento_bairro;?>" id="txtLoc" name="evento_bairro" /><br>
+            <h2>Cidade:</h2><input type="text"  class="input-class" value="<?php echo $view_dados->evento_cidade;?>" id="txtLoc" name="evento_cidade" /><br>
+            <?php if($view_dados->categoria != null){?>
+            <h2>Categoria:</h2><input type="text" class="input-class"  value="<?php echo $view_dados->categoria;?>" id="txtLoc" name="categoria" /><br>
+<?php } ?>
+            
+            <label for="txtDesc" ><h2>Descrição:</h2></label><br><textarea rows="4" cols="50" class="input-class" name="desc_evento" id="txtDesc" ><?php echo $view_dados->desc_evento;?></textarea><br>
+          <?php foreach ($view_dados->caminho_img as $val){ ?>
+   <?php if($val->id_img != 186){  ?>
+               <img class="x" alt="<?php echo $val->id_img;?>" src="../content/site/img/mono-icons/stop32.png" />
+<?php } ?>  
+           <img id="img<?php echo $val->id_img;?>" src="../<?php echo $val->caminho_img; ?>" alt="alt text" width="200" height="200"/><br>
+                                                  
+                                                        <?php } ?>
+           <br>
+    <?php if(isset($view_acao)){?>
+          <center> <input type="submit" name="inserir" id="btnEnviar" value="Confirmar" class="botao01"></center>
+    <?php } else {?>
+  <center> <button type="submit" id="btnEnviar" class="botao01">Enviar</button></center>
+ <?php }?>
+         <script>
+               $(".x").click(function(){
+      
+         var altx = $(this).attr("alt");
+          var selector = '#'+'img'+altx;
+      $.post("../model/excluirimg.php",{altx:altx}, function(resultado){
+         $(this).hide(); 
+        $(selector).hide();
+        
+        
+  });
+         
+     });
+         
+
+     </script>
+</form>

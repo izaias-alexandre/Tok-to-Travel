@@ -1,0 +1,108 @@
+
+    <div id="main">
+      <div class="wrapper cf">
+      
+      
+      
+      
+        
+      <!-- featured -->
+      <div class="home-featured">
+      
+        <ul id="filter-buttons">
+          <li><a href="#" data-filter="*" class="selected">Todos</a></li>
+          <li><a href="#" data-filter=".5">Praias</a></li>
+          <li><a href="#" data-filter=".3">Parques</a></li>
+          <li><a href="#" data-filter=".2">Museus</a></li>
+          <li><a href="#" data-filter=".4">Teatros</a></li>
+          <li><a href="#" data-filter=".6">Estadios</a></li>
+          <li><a href="#" data-filter=".photo">Mais visitados</a></li>
+          
+        </ul>
+        </div
+ 
+        <!-- Filter container -->
+        <form id="frmBusca" action="" method="GET" >
+        <input type="search" class="campo" id="texto" name="Buscar" placeholder="Que local procura?" list="historico">
+        <input type="button" class="apert" name="boot   " id="boot" value="Buscar"> 
+                                
+      
+
+        <datalist id="historico">
+        <?php
+      $dados = $this->carregarDataList();
+      
+
+        foreach ($dados as $value) {
+         ?>
+        <option value = "<?php echo $value->nome_loc; ?>"></option><?php }?>
+                                
+  </datalist>
+  
+        
+        <div id="filter-container" class="cf">
+                                 
+                                               <script>
+                                           $('#boot').click(function(){
+                                             $('#frmBusca').submit();
+                                           });
+                                                 
+                                                 
+                                    </script>
+                                    <?php
+                                    if(isset($_GET['Buscar'])){
+                                    $boot=$_GET['Buscar'];
+                                    
+                                            if(empty($boot) || $boot=='ALL')
+                                            {
+                                              $boot='ALL';
+                                                
+                                             $imagensDB = $this->carregarImagens();
+                                              echo "<script>$('#frmBusca').find('#texto').attr('placeholder','Nada digitado').css('border-color','red');</script>";
+                                            }
+                                            else
+                                            {
+                                               
+                                            $imagensDB = $this->carregarBusca($_GET['Buscar']);
+                                            
+                                            unset($_GET['Buscar']);
+                                             
+                                           
+
+                                           
+                                           }
+                                        }
+ else {
+     $imagensDB = $this->carregarImagens();
+ }
+$maisvisitados = array('Parque Ibirapuera','Avenida Paulista','Catedral da Sé','Rua 25 de Março','Museu de Arte de São Paulo','Galeria do Rock','Teatro Municipal de São Paulo','Edifício Altino Arantes','Estação da Luz','Pinacoteca');
+                                        foreach($imagensDB as $img){?>
+                                          <figure class="<?php if(in_array($img->nome_loc,$maisvisitados )){echo $img->tipo_local.' '.'photo';}else{echo $img->tipo_local;}?>">
+            <a href="site/locais/index/<?php echo $img->cod_local;?>" class="thumb"><img src="<?php echo $img->caminho_img;?>" alt="" /></a>
+            <figcaption>
+              <a href="site/locais/index/<?php echo $img->cod_local;?>"><h3 class="heading"><?php echo $img->nome_loc;?> </h3></a>
+              <?php echo $img->desc_local;?>
+                                                </figcaption>
+          </figure> 
+ 
+                                       <?php  }
+                                   
+                                  
+                                       ?>
+                                    
+          
+        <!-- ENDS Filter container -->
+        
+      </div>
+      <!-- ENDS featured -->
+      </form>
+      
+                        </div>
+      </div>
+      
+      <!-- ENDS WRAPPER -->
+    
+    <!-- ENDS MAIN -->
+              
+    
+

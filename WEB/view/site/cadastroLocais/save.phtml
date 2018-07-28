@@ -1,0 +1,22 @@
+ <script>
+                                    $(document).ready(function(){
+                                         $("li").removeClass('current-menu-item');
+                                        $(".ajuda").addClass('current-menu-item');
+ });
+                                    </script>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <center><h1> Escolha as Imagens </h1></center>
+    <form enctype="multipart/form-data" method="POST" action="site/cadastroLocais/saveimg/<?php echo $view_id;?>">
+       <center><input type="hidden" name="url" value="content/site/img/imagemLocais/"/></center>
+            <center><input type="hidden" name="id_alb" value="<?php echo $view_return;?>"/></center>
+        <center><input type="hidden" name="tipo" value="local"/></center>
+            <center><input type="file" name="arquivo[]" multiple="multiple" /></center><br><br>
+            <center><input name="enviar" type="submit" value="Enviar"></center>
+            <br>
+            <br>
+            <br>
+            <br>
+        </form>

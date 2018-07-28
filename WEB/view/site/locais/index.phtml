@@ -1,0 +1,229 @@
+ <script>
+                                    $(document).ready(function(){
+                                         $("li").removeClass('current-menu-item');
+                                        $(".home").addClass('current-menu-item');
+                                        
+ });
+                                    </script>
+<div id="main">
+      <div class="wrapper cf">
+      
+      
+        
+      <!-- portfolio content-->
+          <div id="portfolio-content" class="cf">          
+        
+        
+        
+        <?php $loc = $this->index();?>    
+        <!-- project pager -->
+        <div class="project-pager cf">
+          <a class="previous-project" href="">&#8592; Voltar</a>
+          
+        </div>
+        <!-- ENDS project pager -->
+          
+          
+          <!-- project box -->
+        <div id="project-box" class="cf">
+        
+        
+          
+        
+        
+          <!-- slider -->
+          <div class="project-slider">
+                <div class="flexslider">
+            <div style="border:solid white 10px">
+              <ul class="slides">
+                
+                                                        <?php foreach ($loc->caminho_img as $val){ ?>
+                                                      <li>
+                <img src="<?php echo $val->caminho_img; ?>" alt="alt text" />
+                                                      </li>
+                                                        <?php } ?>
+                                                  </ul>
+              </div>
+            </div>
+          </div>
+              <!-- ENDS slider -->
+
+
+          <div class="info">
+                <p><strong>Endereço:<?php echo $loc->end_loc; ?>,<?php echo $loc->nro_loc;?><br>CEP:<?php echo $loc->cep_loc ;?><br></strong></p>
+                <?php if(isset($loc->site_loc) and !empty($loc->site_loc)) { ?>
+                <p><a href="<?php echo $loc->site_loc; ?>" class="launch" >Site Oficial</a></p><br><br>
+                <?php } ?>
+                                        <p>Deixe sua Avaliação</p><br>
+                                                                           <form id="Avaliar" method="POST" action="site/eventos/avalia" enctype="multipart/form-data">
+      <div class="estrelas">
+                               <?php $exibir = 'checked'; if($loc->avaliacao == 0 || $loc->nota == 0){$media=0;}else{$media = $loc->nota / $loc->avaliacao;}?> 
+                           <h3><?php  $media = number_format($media,'1');
+echo $media; ?></h3>
+        <input type="radio" id="vazio" name="nota" value="" <?php if(round($media) == 0){echo $exibir;}?>>
+        
+        <label for="estrela_um"><i class="fa"></i></label>
+        <input type="radio" id="estrela_um" name="nota" value="1" <?php if(round($media) == 1){echo $exibir;}?>>
+        
+        <label for="estrela_dois"><i class="fa"></i></label>
+                                <input type="radio" id="estrela_dois" name="nota" value="2" <?php if(round($media) == 2){echo $exibir;}?>>
+        
+        <label for="estrela_tres"><i class="fa"></i></label>
+        <input type="radio" id="estrela_tres" name="nota" value="3" <?php if(round($media) == 3){echo $exibir;}?>>
+        
+        <label for="estrela_quatro"><i class="fa"></i></label>
+        <input type="radio" id="estrela_quatro" name="nota" value="4" <?php if(round($media) == 4){echo $exibir;}?>>
+
+        <label for="estrela_cinco"><i class="fa"></i></label>
+        <input type="radio" id="estrela_cinco" name="nota" value="5" <?php if(round($media) == 5){echo $exibir;}?>><br><br>
+         
+                                <input type="hidden" name="cod_local" id="ideve" value="<?php echo $loc->cod_local;?>">
+                                <p><?php echo $loc->avaliacao; ?>
+                                  Avaliações
+                                </p>
+                                <button type="submit"><img src="content/site/img/mono-icons/linedpapercheck32.png" /></button>
+        
+      </div>
+    </form><br>
+                                   
+                                        <?php $atr = $this->carregarAtracoes($loc->cod_local); 
+                                        if(isset($atr) and !empty($atr)){                                            ?>
+               <h3>Atrações desse Local</h3><br>
+                                            <div>
+                                            <?php foreach ($atr as $atrr){?>
+                                                <!--<a href="atracoes/index/<?php echo $atrr->id_atr;?>"><img src="content/site/img/imgAtracoes/<?php echo $atrr->nome_img_atr;?>"/></a>-->
+                                              <a href="atracoes/index/<?php echo $atrr->id_atr;?>"><img class="imgatr" src="<?php echo $atrr->caminho_img;?>"/></a>
+                                                <p><?php echo $atrr->nome_atr;?><br>
+                                               </p>
+                                            <?php } ?>
+                                            </div>
+                                        <?php } ?>
+                                        
+              </div>
+                                <style>
+                                    .estrelas input[type=radio]{
+  display: none;
+}.estrelas label i.fa:before{
+  content: '\f005';
+  color: #FC0;
+  font-size:30px;
+}.estrelas  input[type=radio]:checked  ~ label i.fa:before{
+  color: #CCC;
+  
+}
+                                </style>
+                                
+              <!-- entry-content -->
+              <div class="entry-content">
+              
+                <h2 class="heading"><?php echo $loc->nome_loc; ?></h2>
+                
+                <div class="multicolumn">
+                <p><?php echo $loc->desc_local;?></p>
+                
+                </div>
+                                        <iframe
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDdCJdHEqxHNAwMuuTzsx6HzKNx5nswz1M
+    &q=<?php echo $loc->end_loc;?>+,<?php echo $loc->nro_loc;?>+-+<?php echo $loc->bairro_loc;?>+-+<?php echo $loc->cidade_loc;?>+-+SP+-+Brazil" allowfullscreen>
+</iframe>
+                                          
+              </div>
+                                </div>
+              <!-- ENDS entry content -->
+
+            
+          <!-- ENDS project box -->
+          <?php if(isset($_SESSION['tipo']) and !empty($_SESSION['tipo'])){ if($_SESSION['tipo'] == 'VIP' || $_SESSION['tipo'] == 'PARCEIRO' ){  ?>
+        
+          <?php $servico = $this->Servico($loc->cod_local); ?>
+<?php if(!empty($servico) and !is_null($servico)){?>
+                        <style>
+                            .desc{
+                                border:1px solid black;
+                                padding-left: 10%;
+                                margin-left: 5%;
+                                  border-radius: 25px;
+                            }
+                            .nome{
+                                border: 1px solid black;
+                                padding-left: 3%;
+                                margin-right: 70%;
+                                position: relative;
+                                margin-left: 11%;
+                                 border-radius: 50px 20px;
+                                
+                            }
+                            .logoserv{
+                                position: relative;
+                               left:5%;
+                               margin-bottom: -4%; 
+                               border-radius: 50%;
+                               background-color: orange; 
+                                
+                            }
+                        </style>
+                       
+        <div class="servicos">
+                                    <h3>Serviços dos nossos parceiros nesse local</h3><br>
+          <?php foreach($servico as $serv){?>
+                                    <img class="logoserv" src="<?php echo $serv->logo;?>" margin="50" height="50"/>
+                                    <h4 class="nome"><?php echo $serv->nome_serv; ?></h4>
+                                               <div class="desc">
+                                                <p ><?php echo $serv->desc_serv; ?></p>
+                                                <p >Para mais informacoes:<a href="http://<?php echo $serv->site_par;?>"> visite o site</a></p>
+                                                </div><br>
+          <?php } ?>  
+        </div>
+
+<?php } ?>
+            
+          
+
+
+<?php } } ?>
+          
+        <!-- related -->
+        <div class="related-projects">
+          <h4 class="related-heading">Locais relacionados</h4>
+          <div class="related-list cf">
+                                            
+                                            <?php
+                                            $tipo = $loc->tipo_local;
+                                            foreach($tipo as $key=>$val){
+                                            
+            if($val->cod_local != $loc->cod_local) { ?>
+                                                <figure>
+                                                    <a href="site/locais/index/<?php echo $val->cod_local;?>" class="thumb"><img src="<?php echo $val->caminho_img; ?>" alt="Alt text" width="250" height="150"/></a>
+              <a href="site/locais/index/<?php echo $val->cod_local;?>" class="heading"><?php echo $val->nome_loc; ?></a>
+            </figure>
+                                            <?php 
+}
+                                            }
+                                            ?>
+            
+            
+          </div>
+        </div>
+
+              <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.12';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+      <div class="fb-comments" data-href="http://localhost/MVCv5/site/locais/index/<?php echo $loc->cod_local;?>" data-width="700" data-numposts="10"></div>
+        <!-- ENDS related -->
+      <div id="fb-root"></div>
+  
+        </div>
+        <!-- ENDS portfolio content-->
+      
+      
+      
+      </div><!-- ENDS WRAPPER -->
+    </div>

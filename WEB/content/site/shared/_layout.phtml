@@ -1,0 +1,276 @@
+<?php if(isset($_SESSION['usuario']) and !empty($_SESSION['usuario'])){
+    $session = strtoupper($_SESSION['usuario']);
+     $id = $_SESSION['id'];
+    $botaologin = 'Sair';
+    $ahref1 = 'site/login/Sair';
+    $botaocad = 'Meu Perfil';
+   $ahref2 = 'site/perfil/usuario/'.$id;
+    } else {
+        $session = 'ENTRAR';
+        $botaologin = 'Login';
+        $ahref1 = 'site/login/';
+        $botaocad = 'Cadastra-se';
+         $ahref2 = 'site/cadastroUsuario/';
+}?>
+<!doctype html>
+<html lang="pt-br">
+     <head>
+        <meta charset="utf-8">
+        <meta property="fb:app_id" content="287489358444358" />
+         <base href="<?php echo APP_ROOT;?>">
+    <title>TOK TO TRAVEL</title>
+    <link rel="shortcut icon" href="content/site/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="content/site/img/favicon.ico" type="image/x-icon">
+                <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+     <style>
+                     
+           #coroa{
+             position: absolute;
+             display:none;
+         } 
+h1{
+  color:black;
+}     
+                     
+.input-class {
+   padding: 12px 30px;
+  text-transform: uppercase;
+  width: 21%;
+  border: 1px solid #656360;
+  border-radius: 15px;
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+  margin: 4px 0;
+  display: block;
+  text-align:center;
+}
+
+.input-class:focus {
+  box-shadow: 0 0 5px #656360;
+  width: 350px;
+}
+
+.input-class::-webkit-input-placeholder { /* Chrome, Safari, Opera */
+  color: #656360;
+  font-style: italic;
+}
+
+.input-class:-moz-placeholder { /* Firefox 18- */
+  color: #656360;
+  font-style: italic;
+  opacity: 1;
+}
+
+.input-class::-moz-placeholder {  /* Firefox 19+ */
+  color: #656360;
+  font-style: italic;
+  opacity: 1;
+}
+
+.input-class:-ms-input-placeholder { /* IE10+ */ 
+  color: #656360;
+  font-style: italic; 
+
+}
+.send {
+  background: none;
+  color: black;
+  border: 1px solid black;
+  border-radius: 70px;
+  cursor: pointer;
+  font-size: 20px;
+  outline: none;
+  padding: 15px 70px;
+}
+
+.imgatr{
+         width:120px;
+         height:100px;
+         
+         }
+
+</style>
+    <!--<[if lt IE 9]>-->
+      <!--<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>-->
+    <!--<![endif]-->
+    <link rel="stylesheet" media="all" href="content/site/css/style.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->    
+        
+    <!-- JS -->
+            
+    <script src="content/site/js/jquery-1.7.1.min.js"></script>
+    <script src="content/site/js/custom.js"></script>
+                <script src="content/site/js/tabs.js"></script>
+    <script src="content/site/js/css3-mediaqueries.js"></script>
+    <script src="content/site/js/jquery.columnizer.min.js"></script>
+    
+    <!-- Isotope -->
+    <script src="content/site/js/jquery.isotope.min.js"></script>
+    
+    <!-- Lof slider -->
+    <script src="content/site/js/jquery.easing.js"></script>
+    <script src="content/site/js/lof-slider.js"></script>
+    <link rel="stylesheet" href="content/site/css/lof-slider.css" media="all"  /> 
+    <!-- ENDS slider -->
+    
+    <!-- Tweet -->
+    <link rel="stylesheet" href="content/site/css/jquery.tweet.css" media="all"  /> 
+    <script src="content/site/js/tweet/jquery.tweet.js" ></script> 
+    <!-- ENDS Tweet -->
+    
+    <!-- superfish -->
+    <link rel="stylesheet" media="screen" href="content/site/css/superfish.css" /> 
+    <script  src="content/site/js/superfish-1.4.8/js/hoverIntent.js"></script>
+    <script  src="content/site/js/superfish-1.4.8/js/superfish.js"></script>
+    <script  src="content/site/js/superfish-1.4.8/js/supersubs.js"></script>
+    <!-- ENDS superfish -->
+    
+    <!-- prettyPhoto -->
+    <script  src="content/site/js/prettyPhoto/js/jquery.prettyPhoto.js"></script>
+    <link rel="stylesheet" href="content/site/js/prettyPhoto/css/prettyPhoto.css"  media="screen" />
+    <!-- ENDS prettyPhoto -->
+    
+    <!-- poshytip -->
+    <link rel="stylesheet" href="content/site/js/poshytip-1.1/src/tip-twitter/tip-twitter.css"  />
+    <link rel="stylesheet" href="content/site/js/poshytip-1.1/src/tip-yellowsimple/tip-yellowsimple.css"  />
+    <script  src="content/site/js/poshytip-1.1/src/jquery.poshytip.min.js"></script>
+    <!-- ENDS poshytip -->
+    
+    <!-- JCarousel -->
+    <script type="text/javascript" src="content/site/js/jquery.jcarousel.min.js"></script>
+    <link rel="stylesheet" media="screen" href="content/site/css/carousel.css" /> 
+    <!-- ENDS JCarousel -->
+    
+    <!-- GOOGLE FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
+
+    <!-- modernizr -->
+    <script src="content/site/js/modernizr.js"></script>
+    
+    <!-- SKIN -->
+    <link rel="stylesheet" media="all" href="content/site/css/skin.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+    <!-- Less framework -->
+    <link rel="stylesheet" media="all" href="content/site/css/lessframework.css"/>
+    
+    <!-- flexslider -->
+    <link rel="stylesheet" href="content/site/css/flexslider.css" >
+    <script src="content/site/js/jquery.flexslider.js"></script>
+<link rel="stylesheet" href="css/logincss.css"/>
+    </head>
+    <body class="home" >
+       <header>
+      <div class="wrapper cf">
+                <div id="logo">
+          <a href=""><img  src="content/site/img/logo.png" alt="Simpler"></a>
+        </div>
+
+      
+        <!-- nav -->
+        <ul id="nav" class="sf-menu">
+                                    <li class="home"><a href="">INICIO</a></li>
+          <li class="eventos"><a href="site/eventos/">EVENTOS</a></li>
+                                        <li class="ajuda"><a >COLABORE</a>
+                                        <ul>
+                                           <li><a href="site/cadastroLocais/">Cadastrar Local</a></li>
+                                           <li><a href="site/cadastroEventos/">Cadastrar Evento</a></li>
+                                        </ul>
+                                        </li>
+          <li class="sobre"><a href="site/sobre/" >SOBRE</a></li>
+          <li class="contatos"><a href="site/contatos/">CONTATO</a></li>
+                                       
+                                        
+                                                                               <li  class="entrar"><a><img id="coroa" src="content/site/img/coroa.png"/><?php echo $session;?></a>
+          <ul>
+              <li><a href="<?php echo $ahref1; ?>"><?php echo $botaologin;?></a></li>
+              <li><a href="<?php echo $ahref2; ?>"><?php echo $botaocad;?></a></li>
+              
+          </ul>
+          </li>
+        </ul>
+                                
+        <div id="combo-holder"></div>
+          
+                
+        
+          
+          
+          
+          <!-- slider content --> 
+          
+    </header>
+        <?php if(isset($_SESSION['tipo']) && $_SESSION['tipo']=='VIP'){
+                                        echo " <script>$('#coroa').css('display','block');</script>";}?>
+        <?php $this->Render();?>
+          <footer>
+                    <?php $footer = $this->carregarFooter();?>
+      <div class="wrapper cf">
+      
+        <!-- widgets -->
+        <ul  class="widget-cols cf">
+          <li class="first-col">
+            
+            <div class="widget-block">
+              <h4>EVENTOS ATUAIS</h4>
+                                                        <?php                                                    foreach ($footer as $eventos){?>
+              <div class="recent-post cf">
+                <a href="site/eventos/eventos/<?php echo $eventos->cod_evento;?>" class="thumb"><img src="<?php echo $eventos->caminho_img;?>" width = "120px" alt="Post" /></a>
+                <div class="post-head">
+                                                                    <span><a href="site/eventos/eventos/<?php echo $eventos->cod_evento;?>"><?php echo $eventos->nome_evento;?></a><span><?php echo $eventos->data_evento;?></span><span><?php echo $eventos->hr_evento;?></span>
+                </div>
+              </div>
+                                                         <?php }?>
+                                                    
+          </li>
+          
+          <li class="second-col">
+            
+            <div class="widget-block">
+              <h4>SOBRE</h4>
+              <a href="http://toknology.tecnologia.ws"><img src="content/site/img/logoapp.png" width = "140px"></a><p>A Toknology é uma empresa de desenvolvimento de softwares</p> 
+              <p>Que tem o compromisso de encontrar facilidades e comodidade para atender nossos clientes</p>
+            </div>
+            
+          </li>
+          
+          <li class="third-col">
+                 
+          </li>
+          
+          <li class="fourth-col">
+            
+            <div class="widget-block">
+              <h4>MENU</h4>
+              <ul>
+                <li class="cat-item"><a href="" >INICIO</a></li>
+                <li class="cat-item"><a href="site/sobre/" >SOBRE</a></li>
+                <li class="cat-item"><a href="site/eventos/">EVENTOS</a></li>
+                <li class="cat-item"><a href="site/contatos" >CONTATO</a></li>
+                                                                <li class="cat-item"><a href="site/parceiro/" >SEJA UM PARCEIRO</a></li>
+				<li class="cat-item"><a href="content/site/arquivos/ToktoTravel.apk" >BAIXE NOSSO APP</a></li>	
+              </ul>
+            </div>
+                 
+          </li>  
+        </ul>
+        <!-- ENDS widgets -->  
+        
+        
+        <!-- bottom -->
+        <div class="footer-bottom">
+          <div class="left">BY <a href="http://toknology.tecnologia.ws" >TOKNOLOGY</a></div>
+            <ul id="social-bar" class="cf sb">
+            <li><a href="http://www.facebook.com"  title="Facebook"><img src="content/site/img/facebook.png" width  = "60px" height="66px"></a></li>
+            <li><a href="https://twitter.com/TOKNOLOGYETEC" title="Twitter"><img src="content/site/img/twitter.png" width  = "60px" height ="66px"> </a></li>
+            <li><a href="https://www.instagram.com/?hl=pt-br" title="Instagram"><img src="content/site/img/instagram.png" width  = "60px" height ="66px"></a></li>
+            <li><a href="http://plus.google.com" title="Google"><img src="content/site/img/gmail.png" width  = "60px" height ="66px"></a></li>
+            </ul>
+        </div>  
+        <!-- ENDS bottom -->
+      <link rel="stylesheet" href="content/site/css/comments.css" />
+      </div>
+    </footer>
+    </body>
+
+</html>
