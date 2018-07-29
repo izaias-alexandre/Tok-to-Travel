@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToktoTravel.View.SalvarImagemEventoView">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button x:Name="camera" Text="Escolher da Galeria" Clicked="camera_Clicked"/>
+            <Button x:Name="galeria" Text="Tirar Foto" Clicked="galeria_Clicked"/>
+            <Image x:Name="FileImage" WidthRequest="200" HeightRequest="200"/>
+            <Button x:Name="upload" Text="Salvar Imagem" Clicked="upload_Clicked"/>
+            <Button x:Name="sem" Text="Cadastar sem Imagem" Clicked="upload_Clicked"/>
+            <ActivityIndicator x:Name="actInd"
+                             IsRunning="False"
+                           Color="Blue"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.ToktoTravel" android:installLocation="auto">
+	<uses-sdk android:minSdkVersion="22" android:targetSdkVersion="26" />
+	<uses-permission android:name="android.permission.CAMERA" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-feature android:name="android.hardware.camera" android:required="true" />
+	<uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+	<application android:label="ToktoTravel.Android" android:icon="@drawable/logo" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true" android:hardwareAccelerated="false" android:largeHeap="true" >
+		<activity android:configChanges="orientation|screenSize" android:icon="@drawable/logo" android:label="ToktoTravel" android:theme="@style/MainTheme" android:name="md55e5710504c9975db60aff108cfa8a067.MainActivity">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+    <provider android:name="android.support.v4.content.FileProvider" 
+          android:authorities="${applicationId}.fileprovider" 
+          android:exported="false" 
+          android:grantUriPermissions="true">
+          
+	  <meta-data android:name="android.support.FILE_PROVIDER_PATHS" 
+                     android:resource="@xml/file_paths"></meta-data>
+</provider>
+		<activity android:configChanges="orientation|screenSize" android:name="md54cd65ac53ae710bff80022afc423e0f3.MediaPickerActivity" />
+		<receiver android:enabled="true" android:label="Toasts Broadcast Receiver" android:name="md53ffbd632ae255fbd20dd51d770591bc9.AlarmHandler" />
+		<provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="com.companyname.ToktoTravel.mono.MonoRuntimeProvider.__mono_init__" />
+		<!--suppress ExportedReceiver-->
+		<receiver android:name="mono.android.Seppuku">
+			<intent-filter>
+				<action android:name="mono.android.intent.action.SEPPUKU" />
+				<category android:name="mono.android.intent.category.SEPPUKU.com.companyname.ToktoTravel" />
+			</intent-filter>
+		</receiver>
+		<meta-data android:name="android.support.VERSION" android:value="25.4.0" />
+	</application>
+</manifest>

@@ -1,0 +1,15 @@
+/osver:6.2
+/appcontainer
+/runtime:mrt100_app
+/eh:clr
+/pdb
+"/nativeLink:C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\microsoft.net.native.compiler\1.7.3\tools\x86\ilc\lib\Native\vmath.lib"
+/customImports
+"C:\Users\izaias\Desktop\ToktoTravel\ToktoTravel\ToktoTravel.UWP\obj\x86\Debug\ilc\intermediate\MDIL\ToktoTravel.UWP.mdilexe"
+"/i:C:\Users\izaias\Desktop\ToktoTravel\ToktoTravel\ToktoTravel.UWP\obj\x86\Debug\ilc\intermediate\MDIL"
+"/out:C:\Users\izaias\Desktop\ToktoTravel\ToktoTravel\ToktoTravel.UWP\obj\x86\Debug\ilc\intermediate\Native\ToktoTravel.UWP.exe"
+"/pdbAltPath:C:\Users\izaias\Desktop\ToktoTravel\ToktoTravel\ToktoTravel.UWP\bin\x86\Debug\ilc"
+"/res:C:\Users\izaias\Desktop\ToktoTravel\ToktoTravel\ToktoTravel.UWP\obj\x86\Debug\ilc\intermediate\Native.res"
+"/i:C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\microsoft.net.native.sharedlibrary-x86\1.7.0\tools\SharedLibrary\chk\MDIL"
+/shimexe
+"/classlib:SharedLibrary"

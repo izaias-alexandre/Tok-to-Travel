@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToktoTravel.View.CadastrarEventoView"
+             xmlns:z="clr-namespace:ToktoTravel;assembly=ToktoTravel"
+             Title="Cadastar Evento">
+    <StackLayout>
+      
+            <StackLayout x:Name="seminternet" IsVisible="False">
+                <Label Text="Desculpe, Você não está conectado a internet"
+                VerticalOptions="Center" 
+                HorizontalOptions="CenterAndExpand" />
+            <Image Source="{z:ImageResource ToktoTravel.nointernet.png}" WidthRequest="200" HeightRequest="150"  VerticalOptions="Center"  HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
+        <ScrollView>
+            <StackLayout x:Name="lista">
+                <Label Text="NOME DO EVENTO:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <Entry x:Name="txtNome"  />
+                <Label Text="DATA DO EVENTO:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <DatePicker x:Name="dpDataEvento" Format="dd/MM/yyyy"
+                    Margin="30, 0, 0, 30" />
+                <Label Text="HORA DO EVENTO:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <TimePicker x:Name="tpHoraEvento"  Format="HH:mm" />
+                <Label Text="CEP"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <Entry x:Name="txtCep"  />
+                <Label Text="LOGRADOURO:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <Entry x:Name="txtLogradouro"  />
+                <Label Text="NUMERO:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <Entry x:Name="txtNumero"  />
+                <Label Text="BAIRRO:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <Entry x:Name="txtBairro"  />
+                <Label Text="CIDADE:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <Entry x:Name="txtCidade"  />
+                <Label Text="DESCRICAO:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <Entry x:Name="txtDescricao"  />
+
+                <Button Text="Cadastar" x:Name="cadastar" Clicked="cadastar_Clicked" />
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+   
+</ContentPage>

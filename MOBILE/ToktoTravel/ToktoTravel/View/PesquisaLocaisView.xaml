@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToktoTravel.View.PesquisaLocaisView"
+             xmlns:z="clr-namespace:ToktoTravel;assembly=ToktoTravel"
+             Title="Pesquisa" >
+    
+      
+
+    <StackLayout>
+        <StackLayout x:Name="seminternet" IsVisible="False">
+            <Label Text="Desculpe, Você não está conectado a internet"
+                VerticalOptions="Center" 
+                HorizontalOptions="CenterAndExpand" />
+            <Image Source="{z:ImageResource ToktoTravel.nointernet.png}" WidthRequest="200" HeightRequest="150"  VerticalOptions="Center"  HorizontalOptions="CenterAndExpand"/>
+        </StackLayout>
+        <SearchBar x:Name="btnBusca" Placeholder="Buscar local" TextChanged="SeachBar_TextChanged" SearchButtonPressed="SeachBar_Clicked" VerticalOptions="Start" IsVisible="True" HeightRequest="40" />
+
+        <Label x:Name="lblmsg"  IsVisible="False" HorizontalOptions="Center" VerticalOptions="Start" />
+        <ListView x:Name="lvwLocais" IsVisible="False" ItemSelected="lvwLocais_ItemSelected">
+            <ListView.ItemTemplate >
+<DataTemplate>
+                    <ImageCell Text="{Binding Nome_loc}" Detail="{Binding End_loc}"  />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            </ListView>
+    </StackLayout>
+    
+</ContentPage>

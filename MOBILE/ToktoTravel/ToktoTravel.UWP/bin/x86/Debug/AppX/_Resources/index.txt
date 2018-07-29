@@ -1,0 +1,5 @@
+ToktoTravel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  ToktoTravel.calendar.png
+  ToktoTravel.logo.png
+  ToktoTravel.Sampa_estaiada_icon.png
+  ToktoTravel.estacaodaluz.jpg

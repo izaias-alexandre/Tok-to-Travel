@@ -1,0 +1,12 @@
+C:\Users\izaias\Documents\Visual Studio 2017\Projects\ToktoTravel\ToktoTravel\ToktoTravel\bin\Debug\netstandard1.3\ToktoTravel.deps.json
+C:\Users\izaias\Documents\Visual Studio 2017\Projects\ToktoTravel\ToktoTravel\ToktoTravel\bin\Debug\netstandard1.3\ToktoTravel.dll
+C:\Users\izaias\Documents\Visual Studio 2017\Projects\ToktoTravel\ToktoTravel\ToktoTravel\bin\Debug\netstandard1.3\ToktoTravel.pdb
+C:\Users\izaias\Documents\Visual Studio 2017\Projects\ToktoTravel\ToktoTravel\ToktoTravel\obj\Debug\netstandard1.3\ToktoTravel.csproj.CoreCompileInputs.cache
+C:\Users\izaias\Documents\Visual Studio 2017\Projects\ToktoTravel\ToktoTravel\ToktoTravel\obj\Debug\netstandard1.3\ToktoTravel.App.xaml.g.cs
+C:\Users\izaias\Documents\Visual Studio 2017\Projects\ToktoTravel\ToktoTravel\ToktoTravel\obj\Debug\netstandard1.3\ToktoTravel.MainPage.xaml.g.cs
+C:\Users\izaias\Documents\Visual Studio 2017\Projects\ToktoTravel\ToktoTravel\ToktoTravel\obj\Debug\netstandard1.3\ToktoTravel.View.BuscaView.xaml.g.cs
+C:\Users\izaias\Documents\Visual Studio 2017\Projects\ToktoTravel\ToktoTravel\ToktoTravel\obj\Debug\netstandard1.3\ToktoTravel.View.DetalhesView.xaml.g.cs
+C:\Users\izaias\Documents\Visual Studio 2017\Projects\ToktoTravel\ToktoTravel\ToktoTravel\obj\Debug\netstandard1.3\ToktoTravel.AssemblyInfoInputs.cache
+C:\Users\izaias\Documents\Visual Studio 2017\Projects\ToktoTravel\ToktoTravel\ToktoTravel\obj\Debug\netstandard1.3\ToktoTravel.AssemblyInfo.cs
+C:\Users\izaias\Documents\Visual Studio 2017\Projects\ToktoTravel\ToktoTravel\ToktoTravel\obj\Debug\netstandard1.3\ToktoTravel.dll
+C:\Users\izaias\Documents\Visual Studio 2017\Projects\ToktoTravel\ToktoTravel\ToktoTravel\obj\Debug\netstandard1.3\ToktoTravel.pdb

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToktoTravel.View.LoginView"
+             xmlns:z="clr-namespace:ToktoTravel;assembly=ToktoTravel"
+             Title="Login">
+    <ContentPage.Content>
+        <StackLayout>
+        <StackLayout x:Name="seminternet" IsVisible="False">
+            <Label Text="Desculpe, Você não está conectado a internet"
+                VerticalOptions="Center" 
+                HorizontalOptions="CenterAndExpand" />
+            <Image Source="{z:ImageResource ToktoTravel.nointernet.png}" WidthRequest="200" HeightRequest="150"  VerticalOptions="Center"  HorizontalOptions="CenterAndExpand"/>
+        </StackLayout>
+        <StackLayout x:Name="lista">
+            
+            <Entry x:Name="login" Placeholder="Digite seu Email" Keyboard="Email"/>
+            <Entry x:Name="senha" Placeholder="Digite sua Senha" IsPassword="True"/>
+            <Button Text="Entrar" Clicked="Button_Clicked" />
+            <Label x:Name="msg" IsVisible="False"/>
+            <Button x:Name="link" Clicked="link_Clicked" Text="Cadastre-se" />
+        </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

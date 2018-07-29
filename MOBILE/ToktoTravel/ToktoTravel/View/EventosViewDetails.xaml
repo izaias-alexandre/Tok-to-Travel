@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToktoTravel.View.EventosViewDetails"
+    Title="{Binding Nome_evento}" >
+    <ScrollView>
+        <StackLayout Padding="10">
+            <Image>
+                <Image.Source>
+                    <UriImageSource Uri="{Binding Nome_img_evento}" CacheValidity="1" CachingEnabled="True"/>
+                </Image.Source>
+            </Image>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Lembrar desse evento" />
+                <Switch x:Name="InfoButton" Toggled="InfoButton_Toggled"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Evento:"   HorizontalOptions="Start"/>
+                <Label x:Name="nome"  Text="{Binding Nome_evento}"   HorizontalOptions="End"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Endereço:"   HorizontalOptions="Start"/>
+                <Label x:Name="end"   Text="{Binding Evento_end}"  HorizontalOptions="End"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Nº:"   HorizontalOptions="Start"/>
+                <Label x:Name="nro"  Text="{Binding Evento_nro}"  HorizontalOptions="End"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="CEP:"   HorizontalOptions="Start"/>
+                <Label x:Name="cep"  Text="{Binding Evento_cep}"   HorizontalOptions="End"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Bairro:"   HorizontalOptions="Start"/>
+                <Label x:Name="bai"  Text="{Binding Evento_bai}"  HorizontalOptions="End"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Cidade:"   HorizontalOptions="Start"/>
+                <Label x:Name="cid"  Text="{Binding Evento_cid}"  HorizontalOptions="End"/>
+            </StackLayout>
+            <StackLayout >
+                <Label Text="Descrição:"   />
+                <Label x:Name="desc"  Text="{Binding Desc_evento}"  />
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Avaliações:" HorizontalOptions="Start"/>
+                <Label x:Name="avaliaatual" Text="{Binding Avaliacao}" HorizontalOptions="End"/>
+                <Label Text="Nota:" HorizontalOptions="Start"/>
+                <Label x:Name="nota" HorizontalOptions="End"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Avalie este Evento:" x:Name="avaliacao" />
+                <Button x:Name="CorfirmaAvalia" IsVisible="False" Text="Salvar avaliacao" Clicked="CorfirmaAvalia_Clicked"/>
+            </StackLayout>
+            <Slider x:Name="Avalia" Maximum="5" Minimum="0" Value="0"  ValueChanged="Avalia_ValueChanged" />
+            
+                <WebView x:Name="Browser" WidthRequest="300" HeightRequest="500" Margin="0,30,0,50"/>
+           
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

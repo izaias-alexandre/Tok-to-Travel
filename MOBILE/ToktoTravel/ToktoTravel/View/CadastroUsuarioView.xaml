@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToktoTravel.View.CadastroUsuarioView"
+             xmlns:z="clr-namespace:ToktoTravel;assembly=ToktoTravel"
+             Title="Cadatra-se">
+
+    <StackLayout>
+        <StackLayout x:Name="seminternet" IsVisible="False">
+        <Label Text="Desculpe, Você não está conectado a internet"
+                VerticalOptions="Center" 
+                HorizontalOptions="CenterAndExpand" />
+            <Image Source="{z:ImageResource ToktoTravel.nointernet.png}" WidthRequest="200" HeightRequest="150"  VerticalOptions="Center"  HorizontalOptions="CenterAndExpand"/>
+    </StackLayout>
+    <ScrollView>
+            <StackLayout x:Name="lista">
+                <Label Text="NOME:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <Entry x:Name="txtNome"  />
+                <Label Text="EMAIL:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <Entry x:Name="txtEmail"  />
+                <Label Text="SENHA:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <Entry x:Name="txtSenha"  IsPassword="True"/>
+                <Button x:Name="cadatrar" Clicked="cadatrar_Clicked" Text="Cadastrar"/>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>

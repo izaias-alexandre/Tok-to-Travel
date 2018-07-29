@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:z="clr-namespace:ToktoTravel;assembly=ToktoTravel"
+             x:Class="ToktoTravel.View.Menu"
+             Title="Menu"
+             BackgroundColor="LightGray">
+
+    <StackLayout>
+        <Image x:Name="logo" Source="{z:ImageResource ToktoTravel.estacaodaluz.jpg}" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" />
+        <StackLayout  Spacing="50"  Padding="20,20,20,20" Margin="20,20,20,20" >
+            <ListView x:Name="ListMenu"  ItemSelected="ListMenu_ItemSelected"   >
+              
+                <ListView.ItemTemplate >
+                    
+                    <DataTemplate>
+                      
+                           
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="40,20,20,0" >
+                                <Image Source="{Binding Logo}"  WidthRequest="40" HeightRequest="40" HorizontalOptions="Start" />
+
+                                <Label Text="{Binding Nome}" TextColor="Black" FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center" />
+                                
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>

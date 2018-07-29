@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:z="clr-namespace:ToktoTravel;assembly=ToktoTravel"
+    x:Class="ToktoTravel.View.BuscaView"
+             Title="Home"
+              Icon="menu.png">
+   
+
+    <StackLayout Padding="20,20" Spacing="10">
+        <Image x:Name="logo" Source="{z:ImageResource ToktoTravel.logo.png}" HeightRequest="270" WidthRequest="270" VerticalOptions="Start">
+
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer
+                Tapped="TapGestureRecognizer_Tapped_1"  />
+            </Image.GestureRecognizers>
+        </Image>
+
+        <Label x:Name="slogan" Text="ToktoTravel é só tocar e viajar!" FontAttributes="Italic" HorizontalOptions="CenterAndExpand" FontSize="Medium" VerticalOptions="Start"/>
+        <StackLayout Orientation="Horizontal" Padding="10,10,10,10">
+            <Image Source="{z:ImageResource ToktoTravel.Sampa_estaiada_icon.png}" HeightRequest="100" WidthRequest="100" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                Tapped="OnTapGestureRecognizerTapped"  />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Image Source="{z:ImageResource ToktoTravel.calendar.png}" HeightRequest="100" WidthRequest="100" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                Tapped="TapGestureRecognizer_Tapped"  />
+                    </Image.GestureRecognizers>
+                </Image>
+
+
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Padding="10,10,10,10">
+            <Label Text="Locais" FontSize="Large" FontAttributes="Bold" HorizontalOptions="StartAndExpand" VerticalOptions="End" />
+            <Label Text="Eventos" FontSize="Large" FontAttributes="Bold" HorizontalOptions="EndAndExpand" VerticalOptions="End"/>
+        </StackLayout>
+
+    </StackLayout>
+  
+</ContentPage>

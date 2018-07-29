@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToktoTravel.View.CadastarLocalView"
+             xmlns:z="clr-namespace:ToktoTravel;assembly=ToktoTravel"
+             Title="Cadastar Local">
+    
+    <StackLayout>
+       
+            <StackLayout x:Name="seminternet" IsVisible="False">
+                <Label Text="Desculpe, Você não está conectado a internet"
+                VerticalOptions="Center" 
+                HorizontalOptions="CenterAndExpand" />
+            <Image Source="{z:ImageResource ToktoTravel.nointernet.png}" WidthRequest="200" HeightRequest="150"  VerticalOptions="Center"  HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
+        <ScrollView>
+            <StackLayout x:Name="lista">
+                <Label Text="NOME DO LOCAL:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <Entry x:Name="txtNome"  />
+                <Label Text="CEP:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <Entry x:Name="txtCep"  />
+                <Label Text="LOGRADOURO:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <Entry x:Name="txtLogradouro"  />
+                <Label Text="NUMERO:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <Entry x:Name="txtNumero"  />
+                <Label Text="BAIRRO:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <Entry x:Name="txtBairro"  />
+                <Label Text="CIDADE:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <Entry x:Name="txtCidade"  />
+                <Label Text="DESCRICAO:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <Entry x:Name="txtDescricao"  />
+
+                <Button x:Name="Cadastar" Clicked="Cadastar_Clicked" Text="Cadastar"/>
+
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+   
+</ContentPage>

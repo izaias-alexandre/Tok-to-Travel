@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DeviceId>30F105C9-681E-420b-A277-7C086EAD8A4E</DeviceId>
+    <UseEmulator>false</UseEmulator>
+    <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
+    <BackgroundTaskDebugEngines>{3B476D35-A401-11D2-AAD4-00C04F990171}</BackgroundTaskDebugEngines>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DeviceId>30F105C9-681E-420b-A277-7C086EAD8A4E</DeviceId>
+    <UseEmulator>true</UseEmulator>
+    <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
+    <BackgroundTaskDebugEngines>{3B476D35-A401-11D2-AAD4-00C04F990171}</BackgroundTaskDebugEngines>
+    <CreateCleanLayout>false</CreateCleanLayout>
+    <DeployOptionalPackages>true</DeployOptionalPackages>
+    <DebugEngines>{3B476D35-A401-11D2-AAD4-00C04F990171}</DebugEngines>
+    <AllowLocalNetworkLoopback>false</AllowLocalNetworkLoopback>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Source>C:\Users\izaias\Desktop\logo.png</Source>
+    <SmallTileSource>C:\Users\izaias\Desktop\logo.png</SmallTileSource>
+    <MediumTileSource>C:\Users\izaias\Desktop\logo.png</MediumTileSource>
+    <WideTileSource>C:\Users\izaias\Desktop\logo.png</WideTileSource>
+    <LargeTileSource>C:\Users\izaias\Desktop\logo.png</LargeTileSource>
+    <AppIconSource>C:\Users\izaias\Desktop\logo.png</AppIconSource>
+    <SplashScreenSource>C:\Users\izaias\Desktop\logo.png</SplashScreenSource>
+    <PackageLogoSource>C:\Users\izaias\Desktop\logo.png</PackageLogoSource>
+    <BadgeLogoSource>C:\Users\izaias\Desktop\logo.png</BadgeLogoSource>
+  </PropertyGroup>
+</Project>

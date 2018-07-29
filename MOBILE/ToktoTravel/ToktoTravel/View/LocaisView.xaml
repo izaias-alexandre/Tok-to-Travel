@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToktoTravel.View.LocaisView"
+             xmlns:z="clr-namespace:ToktoTravel;assembly=ToktoTravel"
+             Title="Locais" >
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="MenuItem1" Icon="loupe_icon.png" Text="Buscar"  Activated="MenuItem1_Activated"/>
+        <ToolbarItem Name="MenuItem2" Icon="cadastro.png" Text="Cadastar"  Activated="MenuItem2_Activated"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <StackLayout x:Name="seminternet" IsVisible="False">
+            <Label Text="Desculpe, Você não está conectado a internet"
+                VerticalOptions="Center" 
+                HorizontalOptions="CenterAndExpand" />
+            <Image Source="{z:ImageResource ToktoTravel.nointernet.png}" WidthRequest="200" HeightRequest="150"  VerticalOptions="Center"  HorizontalOptions="CenterAndExpand"/>
+        </StackLayout>
+        <ListView ItemsSource="{Binding Locais}" x:Name="lista" ItemSelected="lista_ItemSelected" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell x:Name="sss" >
+                        <StackLayout Orientation="Horizontal">
+                            <Image HeightRequest="50" WidthRequest="100" HorizontalOptions="Start" Aspect="AspectFill"  Margin="0,0,0,10">
+                                <Image.Source>
+                                    <UriImageSource Uri="{Binding Nome_img_loc}" CacheValidity="5" CachingEnabled="True" />
+                                </Image.Source>
+                            </Image>
+
+                            <Label       Text="{Binding Nome_loc}" FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                
+                            
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
